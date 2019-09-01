@@ -131,6 +131,36 @@ export default props => (
 );
 ```
 
+### live
+
+```jsx live
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      background: 'papayawhip',
+      width: '100%',
+      padding: '2rem',
+    }}
+  >
+    {children}
+  </div>
+)
+
+const sentence = 'Novela is the best gatsby-theme' // 👈 try edit here
+
+const Title = () => <h1 style={{ color: 'palevioletred' }}>{sentence}</h1>
+render(
+  <Wrapper>
+    <h2 style={{ color: 'teal' }}>
+      DO IT LIVE
+      <h4>please change the sentence !</h4>
+    </h2>
+    <Title />
+      <p>... in the <span img="role" style={{ fontSize: '10em'}}>🌏</span> :)</p>
+  </Wrapper>
+)
+```
+
 ## Blockquotes
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.

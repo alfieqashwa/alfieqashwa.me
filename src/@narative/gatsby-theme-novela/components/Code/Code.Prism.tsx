@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import theme from "prism-react-renderer/themes/oceanicNext";
+import liveTheme from "prism-react-renderer/themes/shadesOfPurple";
+import theme from "prism-react-renderer/themes/nightOwl";
 
 import Icons from "@narative/gatsby-theme-novela/src/icons";
 import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
@@ -34,7 +35,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
   if (props["live"]) {
     return (
       <Container>
-        <LiveProvider code={codeString} noInline={true} theme={theme}>
+        <LiveProvider code={codeString} noInline={true} theme={liveTheme}>
           <LiveEditor style={{ marginBottom: "3px", borderRadius: "2px" }} />
           <LivePreview style={{ fontSize: "18px", borderRadius: "2px" }} />
           <LiveError style={{ color: "tomato" }} />
@@ -43,7 +44,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
     );
   } else {
     return (
-      <Highlight {...defaultProps} code={codeString} language={language}>
+      <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
             <div style={{ overflow: "auto" }}>
