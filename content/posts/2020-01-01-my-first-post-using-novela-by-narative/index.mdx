@@ -171,6 +171,47 @@ const Wrapper = ({ children }) => (
 )
 ```
 
+### JS Line Highlight
+
+```javascript {4-6,9}
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      background: 'papayawhip',
+      width: '100%',
+      padding: '2rem',
+    }}
+  >
+    {children}
+  </div>
+)
+```
+
+### JS Line Highlight
+
+```javascript {2,5-7}
+import React from "react";
+import { ThemeProvider } from "theme-ui";
+import theme from "./theme";
+
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+
+### JS Comment-Out
+
+```javascript
+import React from "react";
+import { ThemeProvider } from "theme-ui";
+import theme from "./theme";
+
+// there's only one export default on a file
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+
 ### live
 
 ```jsx live
