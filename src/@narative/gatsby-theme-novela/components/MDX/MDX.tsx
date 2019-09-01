@@ -146,8 +146,7 @@ const PrismCSS = p => css`
 
     .number-line {
       display: inline-block;
-      /* width: 32px; */
-      width: 2em;
+      width: 32px;
       user-select: none;
       opacity: 0.3;
       color: #dcd9e6;
@@ -162,8 +161,7 @@ const PrismCSS = p => css`
       margin: 0 -32px;
       padding: 0 32px;
       background: ${p.theme.colors.prism.highlight};
-      /* border-left: 3px solid ${p.theme.colors.prism.highlightBorder}; */
-      border-left: .1875em solid ${p.theme.colors.prism.highlightBorder};
+      border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
 
       ${mediaqueries.tablet`
         margin: 0 -20px;
