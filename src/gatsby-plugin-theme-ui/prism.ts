@@ -26,7 +26,7 @@ export default {
   property: `#80cbc4`,
   propertyAccess: `#fff`,
   namespace: `#b2ccd6`,
-  highlight: `rgba(255,255,255,0.07)`,
+  highlight: `#061526`,
   // highlightBorder: `#e1bde2`,
   highlightBorder: `hotpink`,
   dom: `#5F8DC3`,
