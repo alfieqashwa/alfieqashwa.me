@@ -94,6 +94,30 @@ No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
+### JS
+
+```js
+import React from "react";
+import { ThemeProvider } from "theme-ui";
+import theme from "./theme";
+
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+
+### JS Line Highlighting
+
+```js {2,5-7}
+import React from "react";
+import { ThemeProvider } from "theme-ui";
+import theme from "./theme";
+
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+
 ### JSX
 
 ```jsx
