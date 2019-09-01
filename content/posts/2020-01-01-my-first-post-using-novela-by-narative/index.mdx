@@ -96,7 +96,7 @@ But let's throw in a <b>tag</b>.
 
 ### JS
 
-```js
+```javascript
 import React from "react";
 import { ThemeProvider } from "theme-ui";
 import theme from "./theme";
@@ -153,6 +153,22 @@ import theme from "./theme";
 export default props => (
   <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 );
+```
+
+### JS No-Comments & No Line Highlight
+
+```javascript
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      background: 'papayawhip',
+      width: '100%',
+      padding: '2rem',
+    }}
+  >
+    {children}
+  </div>
+)
 ```
 
 ### live
