@@ -28,7 +28,7 @@ export default {
   namespace: `#b2ccd6`,
   highlight: `rgba(255,255,255,0.07)`,
   // highlightBorder: `#e1bde2`,
-  highlightBorder: `hotpink`,
+  highlightBorder: `#d23669`,
   dom: `#5F8DC3`,
   operator: `#5FA8AA`,
 };
