@@ -1,0 +1,126 @@
+---
+title: Variable Declarations
+author: Alfie Qashwa
+date: 2019-03-02
+hero: ./images/hero.jpeg
+excerpt: Pengenalan dasar tentang let dan const yang merupakan fitur yang diperkenalkan oleh ECMAScript2015.
+---
+
+I will explain as simple as I can -- _hopefully..._ 🐣🐣🐣
+
+### `var`
+
+![variable](./images/v-42.jpg)
+
+`Variable` dapat dianalogikan ibarat sebuah kotak pada memori komputer tempat dimana kita dapat menyimpan suatu nilai. Jika ingin menggunakan hasil dari ekspresi yang akan dievaluasi kemudian, dapat kita simpan di dalam sebuah `variable`.
+
+```jsx
+// 👈 this is comment syntax -- for human,
+// machine ignores comment.
+var spam = 42; // assign variable
+
+console.log(spam);  // 42
+```
+
+Anggap sebuah `variable` sebagai _kotak berlabel_ dimana suatu `nilai` ditempatkan.
+
+![variable](./images/hello-goodbye.jpg)
+
+Ketika `nilai` baru diberikan atau `reassigned` pada sebuah `variable`, `nilai` sebelumnya dilupakan.
+
+```javascript {1,5}
+var spam = 'Hello'
+console.log(spam) // 'Hello'
+
+//   assign new value
+var spam = 'Goodbye'
+
+console.log(spam) // 'Goodbye'
+```
+
+### `Old School JavaScript`
+
+Penjabaran sebelumnya adalah penjelasan umum tentang `variable` dalam berbagai bahasa pemograman. Sebelum `ES6` atau `EcmaScript2015`, `JavaScript` hanya memiliki sebuah `assignment` untuk `variable`, yakni `var`, dimana `scope`-nya bersifat `global`.
+
+```javascript {2,8,14}
+// old school JavaScript
+var spam = 42
+
+{ 👈 // block-scope
+
+  // inside block-scope
+  console.log(spam) // 42
+  var spam = 10
+}
+
+// outside
+console.log(spam) // 10
+
+spam = spam * 2
+
+// changed
+console.log(spam) // 20
+```
+
+Barulah kemudian edisi `ES6` diperkenalkan `let` dan `const`.
+
+### `let`
+
+Perbedaan antara `var` dengan `let` terletak pada `block-scope`.
+
+```javascript {2,13}
+// modern JavaScript
+let spam = 42
+
+{
+  // inside block-scope
+  console.log(spam) // 🔴 error
+  let spam = 10 // reassigned inside block
+}
+
+// outside
+console.log(spam) // 42 -- still
+
+spam = spam * 2
+
+// changed
+console.log(spam) // 84
+```
+
+### `const`
+
+`const` mengikuti aturan `scope` yang sama, tetapi nilai atau `value`-nya tidak dapat di ubah / `reassigned`. Sebab itu ia dinamakan `const` -- akronim dari kata `constant`.
+
+> `const` protects you against accidentally changing variables
+
+```javascript
+// modern JavaScript
+const spam = 42
+
+spam = spam * 2 // 🔴 error
+
+// can not changed
+console.log(spam) // doesn't get here
+```
+
+Deklarasi `const` bersifat `read-only`, namun tidak berarti nilainya bersifat kekal / `immutable`. Contohnya pada kondisi dimana nilai sebuah variable adalah `array` atau `object`, nilai `const` dapat diubah.
+
+```javascript {2,8}
+// modern JavaScript
+const spam = [5]
+
+// const array
+console.log(spam) // [5]
+
+// 🔴 human start counting from one, machine from zero
+spam[0] = spam[0] * 2 //👈  zero means the first index.
+
+// changed const array
+console.log(spam) // [10]
+```
+
+> `const` are _tricky_ with `arrays` and `objects`. The reference becomes constant, but the value DOES NOT!
+
+Dalam lingkungan `React`, `var` sangat jarang dan bahkan tidak disarankan untuk digunakan. Umumnya, para developer lebih sering menggunakan `const` -- dan `let` hanya pada `conditional statement`.
+
+🐪 🐪 🐪 🐪 🐪

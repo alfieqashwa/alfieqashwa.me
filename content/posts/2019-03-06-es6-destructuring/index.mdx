@@ -1,0 +1,91 @@
+---
+title: Destructuring
+author: Alfie Qashwa
+date: 2019-03-06
+hero: ./images/hero.jpeg
+excerpt: Destructuring sangat sering digunakan dalam JavaScript Modern untuk menulis kode lebih concise.
+---
+
+![coding-girl](https://source.unsplash.com/NdFREMS5P08)
+
+Destructuring pada dasarnya hanya meringkas cara menulis `code`.
+
+### `Array Destructuring`
+
+Perhatikan perbedaan cara penulisan sebelum JavaScript edisi `ES6`:
+
+```js
+// ES5
+
+var array = [1, 2, 3]
+var first = array[0]
+var third = array[2]
+
+console.log(first, third) // 1 3
+```
+
+Menggunakan `Array destructuring`:
+
+```javascript {3}
+// ES6: array destructuring
+const array = [1, 2, 3]
+const [first, second, third] = array
+
+console.log(first, second, third) // 1 2 3
+```
+
+dan jika tidak menyertakan `the second index`, gunakan `white-space`:
+
+```js {3}
+// ES6: array destructuring
+const array = [1, 2, 3]
+const [first, , third] = array // add white-space at the second index
+
+console.log(first, third) // 1 3
+```
+
+### `Object Destructuring`
+
+Seperti halnya pada `array`, kita pun dapat menggunakan `destructuring` pada `object`. Perhatikan perbandingan penulisan `JavaScript` tanpa menggunakan `object destructuring`:
+
+```js
+// ES5
+var person = {
+  name: 'Qashwa Zhafira',
+  age: 7,
+}
+
+console.log(name, age) // 🔴 error
+
+console.log(person.name, person.age) // ✅ correct
+```
+
+```js
+// ES5
+var person = {
+  name: 'Qashwa Zhafira',
+  age: 7,
+}
+
+var name = person.name
+var age = person.age
+
+console.log(name, age) // ✅ correct
+```
+
+Dengan menggunakan `object destructuring`:
+
+```js {7}
+// ES6: object destructuring
+const person = {
+  name: 'Qashwa Zhafira',
+  age: 7,
+}
+
+const { name, age } = person // more concise
+
+console.log(name, age) // ✅ correct
+```
+
+... happy weekend !
+⚽ ⚽ ⚽ ⚽ ⚽

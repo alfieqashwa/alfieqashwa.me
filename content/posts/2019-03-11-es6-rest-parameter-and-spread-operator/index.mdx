@@ -1,0 +1,95 @@
+---
+title: Rest Parameter && Spread Operator
+author: Alfie Qashwa
+date: 2019-03-11
+hero: ./images/hero.jpeg
+excerpt: Rest Paramater & Spread Operator merupakan fitur baru yang diperkenalkan ES6 yang digunakan dalam dua konsep berbeda; spread operator dan rest parameter.
+---
+
+![code-is-fun](https://source.unsplash.com/i5iIhHSAtp4)
+
+### `rest parameter`
+
+`"..."` [baca: dot-dot-dot] merupakan fitur baru yang diperkenalkan `ES6` -- yang digunakan dalam dua konsep berbeda; `spread operator` dan `rest parameter`.
+`rest parameter` mengkoleksi semua elemen yang tersisa ke dalam `array`, sedangkan `spread operator` memungkinkan iterasi (`array` / `object` / `string`) untuk diperluas menjadi `argument` atau elemen tunggal.
+
+```js
+function add(x, y) {
+  return x + y
+}
+
+add(1, 2, 3, 4, 5) // returns 3
+```
+
+Hasil dari `function` di atas adalah `3` karena hanya dua angka pertama saja yang di jumlahkan.
+
+Pada versi `Javascript` sebelumnya, untuk menghitung jumlah total nilai dari kumpulan beberapa angka -- misalnya...
+
+```js
+sum(1, 2, 3, 4, 5)
+sum(234, 546, 2, 6959)
+sum(13, -6, 121212)
+```
+
+...umumnya kita buat `function` seperti ini:
+
+```js
+function sum() {
+  var total = 0
+  for (var argument of arguments) {
+    total += argument
+  }
+  return total
+}
+```
+
+Dengan menggunakan `rest parameter` kita dapat menuliskan `function` serupa...
+
+```js {1}
+function sum(...nums) {
+  let total = 0
+  for (const num of nums) {
+    total += num
+  }
+  return total
+}
+```
+
+...dengan kode penulisan yang jauh lebih mudah dibaca sekaligus ringkas.
+
+### `spread operator`
+
+Kita boleh anggap `spread operator` sebagai kebalikan dari `rest parameter`. Jika `rest parameter` memungkinkan kita untuk menggabungkan elemen-elemen tunggal ke dalam sebuah `array`, `spread operator` memperluas `array` menjadi elemen-elemen tunggal.
+
+```js {2}
+const numbers = new Set([1, 4, 5, 7])
+console.log(...numbers) // 1 4 5 7
+```
+
+Biasanya kita menggunakan `concat method` untuk menggabungkan dua `array`:
+
+```js {5}
+// Vanilla JavaScript
+var cebongers = ['abu janda', 'ruhut sitompul', 'ngabalin']
+var kampretos = ['ahmad dhani', 'ratna sarumpaet', 'bahar bin smith']
+
+var chaos = cebongers.concat(kampretos)
+console.log(chaos)
+```
+
+```terminal
+🔴 OUTPUT:
+ ["abu janda", "ruhut sitompul", "ngabalin", "ahmad dhani", "ratna sarumpaet", "bahar bin smith"]
+```
+
+`spread operator` menawarkan semacam `shortcut` yang menjadikan penulisan kode di atas lebih mudah di baca:
+
+```js {3}
+// ES6
+const chaos = [...cebongers, ...kampretos]
+console.log(chaos) // same result as above
+```
+
+Demikian pengenalan singkat `rest parameter` dan `spread operator`.
+
+🎧 🎧 🎧 🎧 🎧 ...

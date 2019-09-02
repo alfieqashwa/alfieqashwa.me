@@ -1,0 +1,245 @@
+---
+title: Functions
+author: Alfie Qashwa
+date: 2019-03-15
+hero: ./images/hero.jpeg
+excerpt: Function ibarat rumus dalam matematika dimana dapat kita gunakan berulangkali sesuai kebutuhannya.
+---
+
+![camelCase](https://source.unsplash.com/h9MzeBg73TA)
+
+Pada suatu malam, _ba'da isya'_, sebuah mobil datang membawa dua perangkat papan tulis. Katanya hadiah dari salah satu pejabat kelurahan dari negeri antah-berantah yang berjarak 15 kilometer dari lingkungan tempat saya tinggal.
+
+"_buat anak-anak karang taruna_", kata sang supir.
+
+Saya _pun_ ingin menghitung luas dan menuliskannya ke dalam `JavaScript`.
+
+```js
+let panjang = 240,
+  lebar = 120
+
+let papanTulis1 = panjang * lebar
+console.log(papanTulis1)
+
+panjang = 120
+lebar = 90
+
+papanTulis2 = panjang * lebar
+console.log(papanTulis2)
+```
+
+```terminal
+🔴 OUTPUT:
+28800
+10800
+```
+
+Tapi saya ingin meng-_convert_ hasilnya ke dalam satuan meter, bukan sentimeter.
+
+```js {6,12}
+// ubah menjadi satuan cm2
+let panjang = 240,
+  lebar = 120
+
+let papanTulis1 = panjang * lebar
+console.log(papanTulis1 / 100)
+
+panjang = 120
+lebar = 90
+
+papanTulis2 = panjang * lebar
+console.log(papanTulis2 / 100)
+```
+
+```terminal
+🔴 OUTPUT:
+288
+108
+```
+
+Melihat _code_ yang saya tulis, disitu saya _mikir_,
+
+"... _ribet ya. apa ga ada cara lain yang lebih simple?_"
+
+Lalu kawan saya bilang, "_udah, pake kalkulator aja!_"
+
+Dan akhirnya, kita _pake_ kalkulator. Pinjem di _warung madura_.
+
+Kisah ini pun berakhir...
+
+🚬 🚬 🚬 🚬 🚬
+
+## `T.A.M.A.T`
+
+##### No, i'm joking 😂
+
+## `Definisi sebuah Function`
+
+_Functions_ atau fungsi didefinisikan atau dideklarasikan oleh _keyword_ `function`.
+
+```js
+function namaFungsi() {
+  // code...
+}
+```
+
+Deklarasi di awali dengan _keyword_ `function` diikuti dengan nama fungsi. Nama fungsi ketentuannya sama seperti _variables_ -- bisa berbentuk karakter, angka, _underscores_ `_` dan _dollar signs_ `$`, dan umumnya ditulis dengan [camel case](https://en.wikipedia.org/wiki/Camel_case). Parameter terletak di dalam tanda kurung atau _parentheses_ dimana sifatnya opsional -- tidak mesti ada. _Code_ dituliskan di dalam _block-scope_ di antara tanda kurung kurawal atau _curly brackets_.
+
+```js
+function salam() {
+  console.log("Assalaamu 'alaikum, Gaesss!")
+}
+```
+
+Untuk menjalankan fungsi di atas, _kudu_ dipanggil atau bahasa teknisnya _mesti_ di _invoke_. Cara panggilnya dengan menuliskan nama _variable_ diikuti dengan _parentheses_.
+
+```js {5}
+function salam() {
+  console.log("Assalaamu 'alaikum, Gaesss!")
+}
+
+salam()
+```
+
+```terminal
+🔴 OUTPUT:
+Assalaamu 'alaikum, Gaesss!
+```
+
+Dengan fungsi `salam()` kita dapat _reuse_ atau menggunakan kembali berapakalipun yang diperlukan. Menggunakan _parameter_, _code_ akan menjadi dinamis.
+
+## `Function Parameters`
+
+Kita tambahkan parameter `name` ke dalam fungsi yang merepresentasikan nama seseorang yang kita sapa dengan salam.
+
+```js {2,4-5}
+function salam(name) {
+  console.log(`Assalaamu 'alaikum, ${name}!`)
+
+salam("Kadek Devi")
+salam("Ryan Hidayat")
+```
+
+Perhatikan pada baris kedua 👆 yang di `highlight` menggunakan [template literal](https://www.alfieqashwa.me/template-literal/) 👈 yang pernah dibahas pada artikel sebelumnya.
+
+```terminal
+🔴 OUTPUT:
+Assalaamu 'alaikum, Kadek Devi!
+Assalaamu 'alaikum, Ryan Hidayat!
+```
+
+## `Returning Values`
+
+Kita kembali ke `Kisah Papan Tulis` yang dibahas di awal. Waktu SD kita diajarkan matematika dasar menghitung luas permukaan dengan rumus. Rumus itulah yang kita aplikasikan ke dalam fungsi.
+
+Daripada menuliskan cara seperti...
+
+```js
+let panjang = 240,
+  lebar = 120
+
+let papanTulis1 = panjang * lebar
+console.log(papanTulis1)
+
+panjang = 120
+lebar = 90
+
+papanTulis2 = panjang * lebar
+console.log(papanTulis2)
+```
+
+...kita akan merepresentasikan `rumus` ke dalam fungsi, dalam contoh ini adalah `rumus luas persegi panjang`.
+
+```js {1-3}
+function luasPersegiPanjang(panjang, lebar) {
+  return panjang * lebar
+}
+
+// invoke function
+luasPersegiPanjang(240, 120)
+luasPersegiPanjang(120, 90)
+```
+
+## `Function Expressions`
+
+Sebelumnya kita mendeklarasikan fungsi untuk mendapatkan luas dari dua angka dan menghasilkan nilai berdasarkan rumus yang kita buat di dalam _block-scope_ -- dalam hal ini adalah `panjang * lebar` yang ditulis setelah _keyword_ `return`.
+
+Kita juga dapat membuat `function expression` ke dalam sebuah `variable`.
+
+```js {1}
+const luasPapanTulis = function luasPersegiPanjang(panjang, lebar) {
+  return panjang * lebar
+}
+
+// invoke function
+luasPapanTulis(240, 120)
+luasPapanTulis(120, 90)
+```
+
+### `My Personal Opinion`
+
+Secara pribadi saya hampir selalu menggunakan Bahasa Inggris dalam menuliskan _code_. `Programming` sifatnya global dan membiasakan penggunaan Bahasa Inggris memperbesar peluang berbaur dengan pergaulan komunitas internasional -- baik bekerjasama atau berkontribusi dengan komunitas _open-source_ maupun sekedar bertanya atau menjawab pertanyaan. Hemat saya -- yang bisa saja keliru, tidak _mesti_ semua perlu diterjemahkan ke dalam bahasa Indonesia dan oleh sebab pendapat tersebutlah terkesan dari cara penulisan artikel pada blog ini.
+Bahasa Inggris merupakan pintu paling efektif untuk mendulang ilmu khususnya di dalam dunia _programming_, terlebih-lebih percepatan perkembangan dunia _programming_ sungguh signifikan. Anda _ga bisa hanya ngandelin_ ilmu di kampus semata. Dalam penulisan _code_, saran saya gunakan Bahasa Inggris dan tingkatkan terus _reading skill_ agar perkembangan teknologinya lebih mudah dan lebih cepat kita akses.
+
+Saya akan menulis _code_ pada contoh yang tengah kita kupas ini, sekaligus mengkonversinya menjadi satuan sentimeter seperti berikut:
+
+```js
+// create variable as you like
+const boardArea = function rectangleArea(height, width) {
+  return (height * width) / 100
+}
+
+// invoke function
+boardArea(240, 120)
+boardArea(120, 90)
+```
+
+```terminal
+🔴 OUTPUT:
+288
+108
+```
+
+### `Anonymous Function`
+
+Umumnya, suatu fungsi yang di `assign` ke dalam sebuah `variable` ditulis tanpa nama, disebut `Anonymous Function`.
+
+```js {2}
+// unnamed function
+const boardArea = function(height, width) {
+  return (height * width) / 100
+}
+```
+
+Pada artikel sebelumnya dikupas tentang [Arrow Function](https://www.alfieqashwa.me/arrow-function/) 👈 _so to muscle our memories_ mari kita konversi _code_ sebelumnya.
+
+```js {2}
+// convert into arrow function
+const boardArea = (height, width) => {
+  return (height * width) / 100
+}
+```
+
+Atau boleh juga diringkas seperti ini:
+
+```js
+const boardArea = (h, w) => (h * w) / 100
+```
+
+Atau jika contoh yang hanya membutuhkan satu parameter, misal `rumus bujursangkar`, maka _parentheses_ sifatnya opsional.
+
+```js {1,4}
+const square = x => x * x
+
+// invoke
+square(5)
+```
+
+```terminal
+🔴 OUTPUT:
+25
+```
+
+_have a gudnite, folks..._
+
+🌙 🌙 🌙 🌙 🌙

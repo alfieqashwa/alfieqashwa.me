@@ -1,0 +1,74 @@
+---
+title: Arrow Function
+author: Alfie Qashwa
+date: 2019-03-09
+hero: ./images/hero.jpeg
+excerpt: Pengenalan Dasar Arrow Function dalam ECMAScript2015.
+---
+
+![carpe-diem](https://source.unsplash.com/_whnUW5XghU)
+
+`Arrow Function` -- disebut juga `fat arrow functions`, merupakan cara baru dalam menulis `function` yang diperkenalkan pada edisi `ES6`. Syntax-nya lebih ringkas dan jelas dalam menuliskan ekspresi `function`.
+
+Lebih lanjut, kita bandingkan penulisan `function` pada edisi lama yakni `ES5` dengan edisi `ES6` berikut ini:
+
+```js
+// ES5
+var multiplyES5 = function(x, y) {
+  return x * y
+}
+```
+
+syntax `fat arrow` menggunakan simbol **`=>`** untuk menuliskan `function`:
+
+```js {2}
+// ES6
+const multiplyES6 = (x, y) => {
+  return x * y
+}
+```
+
+`Curly bracket` atau `{}` tidak diperlukan jika hanya terdapat satu `expression`. Contoh sebelumnya juga dapat ditulis sebagai berikut:
+
+```js {2}
+// w/o {} also w/o return statement
+const multiplyES6 = (x, y) => x * y
+```
+
+Tanda kurung atau `parentheses` sifatnya opsional bila hanya terdapat satu parameter.
+
+```js {2}
+// when function only has one parameter
+const phraseSplitter = phrase => phrase.split('')
+
+console.log(phraseSplitter('ES6 Awesomeness')) // ["ES6", "Awesomeness"]
+```
+
+Tetapi, tanda kurung diperlukan bilamana tidak ada parameter dalam suatu fungsi.
+
+```js {1}
+const docLog = () => {
+  console.log(document)
+}
+docLog() // #document... <html> ...</html>
+```
+
+Manfaat `arrow function` akan banyak kita temui ketika men-develop `user interface` menggunakan `library ReactJS` seperti menuliskan `stateless component` dan / atau `anonymous function` pada contoh berikut ini:
+
+```jsx {2}
+// 🔴 stateless component in jsx
+const HomePage = () => <h1>I am HomePage</h1>
+```
+
+_more example..._
+
+```jsx {3}
+// 🔴 an example method within stateful component in jsx
+
+handleKeyPress = item => e => {
+  // some code here...
+}
+```
+
+... happy weekend !
+🏀 🏀 🏀 🏀 🏀

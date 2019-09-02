@@ -1,0 +1,220 @@
+---
+title: Classes
+author: Alfie Qashwa
+date: 2019-03-25
+hero: ./images/hero.jpeg
+excerpt: Class dalam JavaScript tidak sama persis seperti Class dalam bahasa pemograman berbasis OOP.
+---
+
+![white-macbook](https://source.unsplash.com/b18TRXc8UPQ)
+
+Berbeda dengan kebanyakan bahasa pemograman lain berbasis [ Object Oriented Programming ](https://en.wikipedia.org/wiki/Object-oriented_programming) atau `OOP` seperti `Python` atau `Java`, `class` dalam `JavaScript` dapat dikatakan semacam [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) dalam mendelegasikan perilaku `prototipe-based`, tidak seperti halnya -- atau dapat dikatakan berbeda -- dengan definisi tradisional `class` atau `oriented-class` yang terdapat dalam bahasa pemograman lain pada umumnya.
+
+### `The 'Real' typeof Classes`
+
+Berikut merupakan contoh penulisan `class` dalam JavaScript:
+
+```js
+class Food {}
+
+console.log(typeof Food) // function
+```
+
+`class` di awali dengan `keyword` `class` sebelum nama `class`. Nama `class` secara `habit` di awali dengan huruf kapital -- pada contoh di atas adalah `Food`. Jika kita `print` tipe `class Food` dengan `console.log`, maka pada "kenyataannya" `class` adalah `function`.
+Dan jika kita meng-`instantiate` -- 👈 _`I don't know how to translate this word into Bahasa`_ -- `class`, maka `tipe` nya berubah menjadi `object`:
+
+```js
+class Food {}
+console.log(typeof Food) // function
+
+let food = new Food()
+console.log(typeof food) // object
+```
+
+`JavaScript` lebih dikenal sebagai `functional programming language`, dimana jantungnya bahasa ini adalah `function`.
+
+### `Constructor as Method`
+
+```javascript {2-6,9-13,22,26}
+class Food {
+  constructor(name, protein, carbs, fat) {
+    this.name = name
+    this.protein = protein
+    this.carbs = carbs
+    this.fat = fat
+  }
+
+  toString() {
+    return `${this.name} | ${this.protein}g P :: ${this.carbs}g C :: ${
+      this.fat
+    }g F`
+  }
+
+  print() {
+    // convert the type of value into string
+    console.log(this.toString())
+  }
+}
+
+// don't forget write the `new keyword`
+const chicken_breast = new Food('Chicken Breast', 26, 0, 3.5)
+
+chicken_breast.print()
+
+console.log(chicken_breast.protein)
+```
+
+```terminal
+🔴 OUTPUT:
+Chicken Breast | 26g P :: 0g C :: 3.5g F
+
+output: 26 ✅
+```
+
+`Code` di atas membahas seputar tentang kandungan protein, karbohidrat, serta lemak yang terdapat dalam ayam-dada. 🐥 🐥
+
+- Penulisan statement di dalam `class` menggunakan tanda `{}` sebagai `scope`.
+- `function` yang dituliskan di dalam `class` dinamakan `method`, dimana kita tidak perlu lagi menuliskan `keyword` `function` ketika menuliskan `function` di dalam `class`
+- `constructor` adalah `special method` di dalam `class`; tidak mesti ada dan jikalau ada, maka harus hanya ada satu `constructor method` di dalam suatu `class`
+- Penulisan `parameter`-- atau `"property??"` dituliskan di dalam tanda `()` setelah `keyword` `constructor`
+- `keyword` `new` dibutuhkan dalam meng-`instantiate` `class` dimana `argument` dapat ditulis di dalam tanda `()` setelah nama `class`
+- Seperti halnya `object`, memanggil suatu `method` di dalam `class` dibubuhkan tanda "." di antara nama `class` dengan nama `method` seperti terdapat pada contoh sebelumnya: `chicken_breast.protein`
+
+### `Anonymous Classes`
+
+Penulisan `class` dapat ditulis tanpa nama -- seperti halnya `function` --, umumnya ditulis sekalian dideklarasikan menjadi sebuah nilai dalam sebuah variable.
+
+```js
+const Food = class {
+  // it's also called anonymous class
+  // code...
+}
+```
+
+### `Constructor is a Special Method`
+
+Seperti telah dijelaskan sebelumnya, cara memanggil suatu `method` yang terdapat di dalam `class` mirip seperti cara memanggil suatu `variable` di dalam suatu `object`, yaitu _`vehicle.displayType`_ pada contoh di bawah ini:
+
+```js
+class Vehicle {
+  displayType() {
+    console.log(`Car`)
+  }
+}
+
+let vehicle = new Vehicle()
+console.log(vehicle.displayType)
+```
+
+```terminal
+🔴 OUTPUT:
+function displayType() {
+  console.log('Car');
+}
+```
+
+Berbeda dengan `constructor method` dimana ia otomatis terpanggil dengan hanya perlu memanggil nama `class`-nya...
+
+```js
+class Vehicle {
+  constructor() {
+    console.log('Car')
+  }
+}
+let vehicle = new Vehicle()
+```
+
+```terminal
+🔴 OUTPUT:
+Car
+```
+
+...karena `constructor` merupakan `special method` di dalam `class`.
+
+### `Inheritance with extends and super()`
+
+Mewarisi atau `inherit` suatu `class` dapat dilakukan dengan penulisan `extends` `keyword` setelah nama `child class` seperti pada contoh berikut ini:
+
+```js {9}
+// parent class
+class Vehicle {
+  constructor(color) {
+    console.log(`The car is ${color}`)
+  }
+}
+
+// child class
+class HondaJazz extends Vehicle {
+  // there is no code at all within this scope
+}
+
+let jazz = new HondaJazz('Silver')
+```
+
+```terminal
+🔴 OUTPUT:
+The car is Silver
+```
+
+Dan jika `child class` memiliki `constructor method`, maka wajib ditambahkan `super()` di dalam `scope` pada `constructor` yang terdapat di dalam `child class` seperti berikut:
+
+```js {9-11}
+// parent class
+class Vehicle {
+  constructor() {
+    console.log('The base Vehicle')
+  }
+}
+
+// child class
+class HondaJazz extends Vehicle {
+  constructor() {
+    super()
+
+    console.log('This is Honda Jazz')
+  }
+}
+
+let jazz = new HondaJazz()
+```
+
+```terminal
+🔴 OUTPUT:
+The base Vehicle
+This is Honda Jazz
+```
+
+### `Method Override`
+
+Kita dapat mengubah suatu `method` yang terdapat di dalam `parent class` dengan memanggil nama `method` tersebut di dalam `child class` seperti berikut ini:
+
+```js {3-4,10-11,21-22}
+// parent class
+class MyCat {
+  colorType() {
+    return "My cat's color is black"
+  }
+}
+
+// child class
+class MyNeighborCat extends MyCat {
+  colorType() {
+    return "My neighbor cat's color is yellow"
+  }
+}
+
+let kucingTetangga = new MyNeighborCat()
+
+console.log(kucingTetangga.colorType)
+```
+
+```terminal
+🔴 OUTPUT:
+function colorType() {
+  return 'My neighbor cat's color is yellow';
+}
+```
+
+Demikian penjelasan singkat mengenai fitur `class` dalam `JavaScript` yang diperkenalkan semenjak versi `EcmaScript2015` atau `ES6` yang diperlukan dalam mempelajari `library ReactJS`.
+
+🔥 🔥 🔥 🔥 🔥

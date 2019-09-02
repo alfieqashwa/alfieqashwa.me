@@ -1,0 +1,108 @@
+---
+title: Template Literal
+author: Alfie Qashwa
+date: 2019-03-03
+hero: ./images/hero.jpeg
+excerpt: Template Literal dalam mempermudah serta meringkas penulisan kode sangat memengaruhi perkembangan dalam JavaScript Modern.
+---
+
+![tools](https://source.unsplash.com/XMFZqrGyV-Q)
+
+
+Beberapa pilihan dalam `JavaScript` dalam mendeklarasikan string:
+
+```javascript {1}
+var naskah = '"Rangga, kamu jahaattt!", ungkap Cinta.'
+
+console.log(naskah) // "Rangga, kamu jahatttt!", ungkap Cinta.
+```
+
+perhatikan ☝️ tata letak 👇 tanda kutip ' dengan "
+
+```javascript {1}
+var naskah = "'Rangga, kamu jahatttt!', ungkap Cinta."
+
+console.log(naskah) // 'Rangga, kamu jahatttt!', ungkap Cinta.
+```
+
+Kericuhan antara `single-quote` dengan `double-quote` didamaikan dengan kehadiran `backtick`.
+
+### `Backtick`
+
+`ES6` menambahkan `backtick` pada fitur `Template Literal`
+
+```javascript {1,3}
+const naskah1 = `"Rangga, kamu jahatttt!", ungkap Cinta.`
+//...and
+const naskah2 = `'Rangga, kamu jahatttt!', ungkap Cinta.`
+```
+
+Manfaat fungsi `backtick` lebih terasa praktis pada saat penggunaan beberapa variable:
+
+```javascript {6}
+// no string templates in ES5 👈
+var cowo = 'Rangga',
+  cewe = 'Cinta',
+  ekspresi = 'jahatttt'
+
+var naskah = '"' + cowo + ', kamu ' + ekspresi + '!"' + ', ungkap ' + cewe + '.'
+🤔️ // ribett
+
+console.log(naskah) // "Rangga, kamu jahatttt!", ungkap Cinta.
+```
+
+```javascript {6}
+// string templates in ES6 👈
+const cowo = 'Rangga',
+  cewe = 'Cinta',
+  ekspresi = 'jahatttt'
+
+const naskah = `"${cowo}, kamu ${ekspresi}!", ungkap ${cewe}.`
+// 👌️ simpler and more readable
+
+console.log(naskah)
+```
+
+```terminal
+🔴 OUTPUT:
+"Rangga, kamu jahatttt!", ungkap Cinta.
+```
+
+### `Another Example`
+
+```javascript {5}
+// old school JavaScript
+var fName = 'Ryan'
+var lName = 'Hidayat'
+
+var fullName = fName + ' ' + lName // 👈
+
+console.log(fullName)
+```
+
+```terminal
+🔴 OUTPUT:
+ Ryan Hidayat
+```
+
+```javascript {5}
+// ES6
+const fName = 'Kadek',
+  lName = 'Devi'
+
+const fullName = `${fName} ${lName}` // 👈
+console.log(fullName)
+```
+
+```terminal
+🔴 OUTPUT:
+Kadek Devi
+```
+
+Because it is very useful,
+
+![backtick](./images/backtick-key.jpg)
+
+so don't forget where the `backtick` is ...
+
+🎸 🎸 🎸 🎸 🎸
