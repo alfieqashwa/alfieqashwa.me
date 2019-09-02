@@ -21,7 +21,7 @@ const StyledTable = styled.table`
   `}
 
   ${mediaqueries.tablet`
-    max-width: 546px;
+    max-width: 556px;
   `};
 
   ${mediaqueries.phablet`
