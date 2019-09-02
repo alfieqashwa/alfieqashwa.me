@@ -21,13 +21,11 @@ const StyledTable = styled.table`
   `}
 
   ${mediaqueries.tablet`
-    max-width: 486px;
-    width: 100%;
+    max-width: 496px;
   `};
 
   ${mediaqueries.phablet`
     margin: 15px auto 55px;
-    width: 100%;
   `};
 `;
 
