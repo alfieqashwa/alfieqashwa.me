@@ -18,7 +18,7 @@ const LanguageHighlight = css`
   top: 0;
 `;
 
-export const LangsTitle = styled.div`
+export const LangsIcon = styled.div`
   /* overflow: auto; */
   /* margin-right: -2.3125rem; */
   /* margin-left: -2.3125rem; */
