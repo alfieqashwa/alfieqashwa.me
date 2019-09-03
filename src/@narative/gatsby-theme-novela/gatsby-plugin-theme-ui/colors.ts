@@ -24,7 +24,7 @@ export default {
       grey: "#73737D",
       primary: "#fff",
       secondary: "#fff",
-      accent: "#AA771C",
+      accent: "#B28432",
       background: "#111216",
       hover: "rgba(255, 255, 255, 0.07)",
       gradient:
