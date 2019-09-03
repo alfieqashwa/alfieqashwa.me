@@ -3,11 +3,12 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import liveTheme from "prism-react-renderer/themes/shadesOfPurple";
-// import theme from "prism-react-renderer/themes/nightOwl";
+import theme from "prism-react-renderer/themes/nightOwl";
 
 import Icons from "@narative/gatsby-theme-novela/src/icons";
 import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
 import { copyToClipboard } from "@narative/gatsby-theme-novela/src/utils";
+import { LangsTitle } from './LangsTitle'
 
 const RE = /{([\d,-]+)}/;
 
@@ -44,10 +45,10 @@ function CodePrism({ codeString, language, metastring, ...props }) {
     );
   } else {
     return (
-      <Highlight {...defaultProps} code={codeString} language={language}>
+      <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
-            <div style={{ overflow: "auto" }}>
+            <LangsTitle>
               <pre className={className} style={{ position: "relative" }}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
@@ -78,7 +79,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
                   );
                 })}
               </pre>
-            </div>
+              </LangsTitle>
           );
         }}
       </Highlight>
