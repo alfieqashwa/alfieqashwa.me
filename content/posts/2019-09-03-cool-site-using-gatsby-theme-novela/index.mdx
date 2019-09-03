@@ -1,10 +1,12 @@
 ---
-title: My first post using Novela by Narative
+title: Cool Site Using Gatsby Theme Novela
 author: Alfie Qashwa, Celloworld
-date: 2019-09-01
-hero: ./images/hero.jpg
-excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
+date: 2019-09-03
+hero: ./images/hero.jpeg
+excerpt: Blogging with Gatsby Theme Novela by Narative to Learn In Public
 ---
+
+import CelloLovesGatsbyThemeNovela from '../../components/CelloLovesNovela'
 
 My first post using `@narative/gatsby-theme-novela`. Novela is built by the team at [Narative](https://narative.co), and built for everyone that loves the web.
 
@@ -72,15 +74,39 @@ Some text to show that the reference links can follow later.
 
 ## Images
 
+### Small Image
+
 <div className="Image__Small">
   <img
-    src="./images/article-image-2.jpg"
+    src="./images/vaping.jpeg"
     title="Logo Title Text 1"
-    alt="Alt text"
+    alt="Small Image"
   />
 </div>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Medium Image
+
+<div className="Image__Medium">
+  <img
+    src="./images/vaping.jpeg"
+    title="Logo Title Text 1"
+    alt="Medium Image"
+  />
+</div>
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Large Image
+
+<div className="Image__Large">
+  <img
+    src="./images/vaping.jpeg"
+    title="Logo Title Hero"
+    alt="Large Image"
+  />
+</div>
 
 ## Code and Syntax Highlighting
 
@@ -94,7 +120,7 @@ No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
-### JS
+### JavaScript
 
 ```javascript
 import React from "react";
@@ -106,7 +132,7 @@ export default props => (
 );
 ```
 
-### JS Line Highlighting
+### JavaScript Line Highlighting
 
 ```js {2,5-7}
 import React from "react";
@@ -128,22 +154,6 @@ import theme from "./theme";
 export default props => (
   <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 );
-```
-
-### JSX
-
-```jsx
-const Wrapper = ({ children }) => (
-  <div
-    style={{
-      background: 'papayawhip',
-      width: '100%',
-      padding: '2rem',
-    }}
-  >
-    {children}
-  </div>
-)
 ```
 
 ### JSX Line-Highlighting
@@ -171,22 +181,6 @@ export default props => (
 );
 ```
 
-### JS No-Comments & No Line Highlight
-
-```javascript
-const Wrapper = ({ children }) => (
-  <div
-    style={{
-      background: 'papayawhip',
-      width: '100%',
-      padding: '2rem',
-    }}
-  >
-    {children}
-  </div>
-)
-```
-
 ### JS Line Highlight
 
 ```javascript {4-6,9}
@@ -203,59 +197,34 @@ const Wrapper = ({ children }) => (
 )
 ```
 
-### JS Line Highlight
-
-```javascript {2,5-7}
-import React from "react";
-import { ThemeProvider } from "theme-ui";
-import theme from "./theme";
-
-export default props => (
-  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-);
-```
-
-### JS Comment-Out
-
-```javascript
-import React from "react";
-import { ThemeProvider } from "theme-ui";
-import theme from "./theme";
-
-// there's only one export default on a file
-export default props => (
-  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-);
-```
-
-### live
+### Live Code
 
 ```jsx live
 const Wrapper = ({ children }) => (
   <div
     style={{
-      background: 'papayawhip',
-      width: '100%',
-      padding: '2rem',
+      background: "papayawhip",
+      width: "100%",
+      padding: "2rem"
     }}
   >
     {children}
   </div>
-)
+);
 
-const sentence = 'Novela is the best gatsby-theme' // 👈 try edit here
+const Title = () => (
+  <h2 style={{ color: "palevioletred", textAlign: "center" }}>
+    Hello <span img="role" style={{ fontSize: '10em'}}>🌏</span>
+    <br />
+    Try This Awesome Theme by Narative.
+  </h2>
+);
 
-const Title = () => <h1 style={{ color: 'palevioletred' }}>{sentence}</h1>
 render(
   <Wrapper>
-    <h2 style={{ color: 'teal' }}>
-      DO IT LIVE
-      <h4>please change the sentence !</h4>
-    </h2>
     <Title />
-      <p>... in the <span img="role" style={{ fontSize: '10em'}}>🌏</span> :)</p>
   </Wrapper>
-)
+);
 ```
 
 ## Blockquotes
@@ -298,38 +267,4 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 | sources.contentful     |      false      |                                                    Enable Contentful data source                                                    |
 
 
-### TABLE Set w/ Medium className>
-
-<div className="Image__Medium">
-
-| Option                 |     Default     |                                                             Description                                                             |
-| ---------------------- | :-------------: | :---------------------------------------------------------------------------------------------------------------------------------: |
-| contentPosts           |  content/posts  |                                          Define where you want to pull your Post data from                                          |
-| contentAuthors         | content/authors |                                         Define where you want to pull your Author data from                                         |
-| authorsPage            |      false      |                                                         Create Author pages                                                         |
-| authorsPath            |    /authors     |                                                   Where should Author pages live?                                                   |
-| basePath               |        /        |                      Where should the site be served from? `/blog` will change all paths to start with `/blog`                      |
-| articlePermalinkFormat |      :slug      | Define the format of the article permalink. Possible values: `:slug`, `:year`, `:month`, `:day`. Example: `:year/:month/:day/:slug` |
-| mailchimp              |      false      |                                             Enable Mailchimp subscriptions on each Post                                             |
-| sources.local          |      true       |                                                Enable local file system data source                                                 |
-| sources.contentful     |      false      |                                                    Enable Contentful data source                                                    |
-
-</div>
-
-### TABLE Set w/ Large className>
-
-<div className="Image__Large">
-
-| Option                 |     Default     |                                                             Description                                                             |
-| ---------------------- | :-------------: | :---------------------------------------------------------------------------------------------------------------------------------: |
-| contentPosts           |  content/posts  |                                          Define where you want to pull your Post data from                                          |
-| contentAuthors         | content/authors |                                         Define where you want to pull your Author data from                                         |
-| authorsPage            |      false      |                                                         Create Author pages                                                         |
-| authorsPath            |    /authors     |                                                   Where should Author pages live?                                                   |
-| basePath               |        /        |                      Where should the site be served from? `/blog` will change all paths to start with `/blog`                      |
-| articlePermalinkFormat |      :slug      | Define the format of the article permalink. Possible values: `:slug`, `:year`, `:month`, `:day`. Example: `:year/:month/:day/:slug` |
-| mailchimp              |      false      |                                             Enable Mailchimp subscriptions on each Post                                             |
-| sources.local          |      true       |                                                Enable local file system data source                                                 |
-| sources.contentful     |      false      |                                                    Enable Contentful data source                                                    |
-
-</div>
+<CelloLovesGatsbyThemeNovela />
