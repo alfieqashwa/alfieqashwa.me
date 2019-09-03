@@ -159,6 +159,7 @@ export const LangsTitle = styled.div`
     padding: 14px 0;
     text-indent: 4px;
     letter-spacing: -15px;
+    ${LanguageHighlight};
   }
 `;
 
