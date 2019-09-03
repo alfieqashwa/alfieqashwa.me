@@ -132,36 +132,34 @@ export const LangsTitle = styled.div`
   }
   /* terminal */
   pre[class*='language-terminal'] {
-  position: relative;
-  padding: 1rem;
-  padding-left: 1.5rem;
-  /* font-family: Helvetica, Arial, sans-serif; BUGS */
-  border: 1px solid #d8d9da;
-  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
-  border-radius: 6px;
-  padding-top: 45px;
-  margin: 2rem 0;
-  font-size: 14px;
-  background: white;
-  color: #333;
-}
-
-pre[class*='language-terminal'] ::before {
-  content: '\2022 \2022 \2022';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  background: #e1e1e1;
-  color: #c2c3c4;
-  width: 100%;
-  font-size: 2.5rem;
-  margin: 0;
-  line-height: 0;
-  padding: 14px 0;
-  text-indent: 4px;
-  letter-spacing: -15px;
-}
+    position: relative; padding: 1rem;
+    padding-left: 1.5rem;
+    /* font-family: Helvetica, Arial, sans-serif; BUGS */
+    border: 1px solid #d8d9da;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    padding-top: 45px;
+    margin: 2rem 0;
+    font-size: 14px;
+    background: white;
+    color: #333;
+  }
+  pre[class*='language-terminal']::before {
+    content: '\2022 \2022 \2022';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    background: #e1e1e1;
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+    letter-spacing: -15px;
+  }
 `;
 
 export const preStyles = css`
