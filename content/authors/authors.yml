@@ -13,7 +13,7 @@
 
 - name: Celloworld
   bio: |
-    Written by Celloworld. Somewhere I'm NOT Scatterbrain. 🇬🇧
+    Written by Celloworld. 'Somewhere I'm NOT Scatterbrain' ~ Radiohead. 🇬🇧
   avatar: ./avatars/celloworld.png
   featured: true
   social:
