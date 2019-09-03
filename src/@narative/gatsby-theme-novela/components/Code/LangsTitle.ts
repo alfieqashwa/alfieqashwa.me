@@ -12,7 +12,7 @@ const LanguageHighlight = css`
   line-height: 1.3;
   padding: 0.2rem 0.4rem;
   position: absolute;
-  left: 1.3rem;
+  left: 32px;
   text-align: left;
   text-transform: uppercase;
   top: 0;
@@ -20,10 +20,10 @@ const LanguageHighlight = css`
 
 export const LangsTitle = styled.div`
   /* overflow: auto; */
-  margin-right: -2.3125rem;
-  margin-left: -1.3125rem;
-  padding-right: 1em;
-  padding-left: 0.75em;
+  /* margin-right: -2.3125rem; */
+  /* margin-left: -2.3125rem; */
+  /* padding-right: 1em; */
+  /*padding-left: 0.75em; */
   /* === PLUGIN-CODE === */
   pre[class*='language-js']::before {
     content: 'js';
