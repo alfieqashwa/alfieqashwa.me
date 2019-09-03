@@ -19,7 +19,7 @@ const LanguageHighlight = css`
 `;
 
 export const LangsTitle = styled.div`
-  /* overflow: auto; */
+  overflow: auto;
   margin-right: -2.3125rem;
   margin-left: -1.3125rem;
   padding-right: 1em;

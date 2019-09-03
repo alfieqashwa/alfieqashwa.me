@@ -49,7 +49,6 @@ function CodePrism({ codeString, language, metastring, ...props }) {
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
             <LangsTitle>
-              {/* <div style={{ 'overflow': 'auto'}}> */}
               <pre className={className} style={{ position: "relative" }}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
