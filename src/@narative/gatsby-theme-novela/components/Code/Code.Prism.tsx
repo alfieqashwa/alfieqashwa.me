@@ -48,7 +48,8 @@ function CodePrism({ codeString, language, metastring, ...props }) {
       <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
-            <LangsTitle style={{ overflow: 'auto' }}>
+            <div style={{ overflow: "auto" }}>
+            <LangsTitle>
               <pre className={className} style={{ position: "relative" }}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
@@ -80,6 +81,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
                 })}
               </pre>
               </LangsTitle>
+            </div>
           );
         }}
       </Highlight>
