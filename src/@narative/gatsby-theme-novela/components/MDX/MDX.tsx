@@ -7,18 +7,18 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { useColorMode } from "theme-ui";
 
-import Anchor from "@components/Anchor";
-import Blockquote from "@components/Blockquote";
-import Code from "@components/Code";
-import Headings from "@components/Headings";
-import HorizontalRule from "@components/HorizontalRule";
-import Lists from "@components/Lists";
-import Paragraph from "@components/Paragraph";
-import Tables from "@components/Tables";
-import { ImageZoom } from "@components/Image";
+import Anchor from "@narative/gatsby-theme-novela/src/components/Anchor";
+import Blockquote from "../Blockquote";
+import Code from "../Code";
+import Headings from "@narative/gatsby-theme-novela/src/components/Headings";
+import HorizontalRule from "@narative/gatsby-theme-novela/src/components/HorizontalRule";
+import Lists from "@narative/gatsby-theme-novela/src/components/Lists";
+import Paragraph from "@narative/gatsby-theme-novela/src/components/Paragraph";
+import Tables from "../Tables";
+import { ImageZoom } from "@narative/gatsby-theme-novela/src/components/Image";
 
-import mediaqueries from "@styles/media";
-import { toKebabCase } from "@utils";
+import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
+import { toKebabCase } from "@narative/gatsby-theme-novela/src/utils";
 
 const components = {
   img: ImageZoom,
@@ -120,7 +120,7 @@ const HeadingsCSS = css`
 
 const PrismCSS = p => css`
   .prism-code {
-    overflow: scroll;
+    overflow-x: auto;
     width: 100%;
     max-width: 744px;
     margin: 0 auto;
