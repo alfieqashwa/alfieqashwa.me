@@ -102,7 +102,7 @@ function Copy({ toCopy }: { toCopy: string }) {
 
     setTimeout(() => {
       setHasCopied(false);
-    }, 2000);
+    }, 1800);
   }
 
   return (
