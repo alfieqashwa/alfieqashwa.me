@@ -58,7 +58,7 @@ class CelloLovesGatsbyThemeNovela extends Component {
             Narative.co
           </a>
         </h2>
-        <h1 style={{ color: '#AA771C', marginTop: '1rem' }}>
+        <h1 style={{ color: '#e9c16c', marginTop: '1rem' }}>
           Thank You{' '}
           <a
             css={css`
