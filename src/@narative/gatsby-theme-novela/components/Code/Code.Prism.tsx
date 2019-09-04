@@ -8,7 +8,7 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import Icons from "@narative/gatsby-theme-novela/src/icons";
 import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
 import { copyToClipboard } from "@narative/gatsby-theme-novela/src/utils";
-import { LangsIcon } from './LangsIcon'
+import { LangsIcon, preStyles } from './LangsIcon'
 
 const RE = /{([\d,-]+)}/;
 
@@ -50,7 +50,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
           return (
             <div style={{ overflow: "auto" }}>
             <LangsIcon>
-              <pre className={className} style={{ position: "relative" }}>
+              <pre className={className} style={{ position: "relative" }} css={preStyles}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
                   const { className } = getLineProps({
