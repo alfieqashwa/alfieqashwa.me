@@ -162,11 +162,11 @@ const PrismCSS = p => css`
       padding: 0 32px;
       background: ${p.theme.colors.prism.highlight};
       border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
-      min-width: 920px;
 
       ${mediaqueries.tablet`
         margin: 0 -20px;
         padding: 0 20px;
+        min-width: 920px;
       `};
     }
 
