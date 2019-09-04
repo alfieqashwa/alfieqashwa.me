@@ -120,7 +120,7 @@ const HeadingsCSS = css`
 
 const PrismCSS = p => css`
   .prism-code {
-    overflow-x: auto;
+    overflow: auto;
     width: 100%;
     max-width: 744px;
     margin: 0 auto;
@@ -162,6 +162,8 @@ const PrismCSS = p => css`
       padding: 0 32px;
       background: ${p.theme.colors.prism.highlight};
       border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
+      /* min-width: 744px; */
+      width: 1025px;
 
       ${mediaqueries.tablet`
         margin: 0 -20px;

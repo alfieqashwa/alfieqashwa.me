@@ -50,7 +50,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
           return (
             <div style={{ overflow: "auto" }}>
             <LangsIcon>
-              <pre className={className} style={{ position: "relative" }} css={preStyles}>
+              <pre className={className} style={{ position: "relative" }}>
                 <Copy toCopy={codeString} />
                 {tokens.map((line, index) => {
                   const { className } = getLineProps({
@@ -123,7 +123,7 @@ function Copy({ toCopy }: { toCopy: string }) {
 const CopyButton = styled.button`
   position: absolute;
   right: 7px;
-  top: 0;
+  top: -2px;
   padding: 8px 12px 7px;
   border-radius: 5px;
   color: #6f7177;
