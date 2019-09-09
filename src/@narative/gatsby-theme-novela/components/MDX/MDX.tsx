@@ -125,7 +125,7 @@ const PrismCSS = p => css`
     max-width: 744px;
     margin: 0 auto;
     padding: 32px;
-    font-size: 1em;
+    font-size: 14px;
     margin: 15px auto 50px;
     border-radius: 5px;
     font-family: ${p.theme.fonts.monospace};
@@ -182,7 +182,7 @@ const PrismCSS = p => css`
     `};
 
     ${mediaqueries.tablet`
-      max-width: 526px;
+      border-radius: 0;
       padding: 20px 20px;
       left: 0;
     `};
@@ -191,12 +191,11 @@ const PrismCSS = p => css`
       border-radius: 0;
       margin: 0 auto 25px;
       padding: 25px 20px;
-      overflow: initial;
-      width: unset;
+      overflow: auto;
+      width: 100%;
       max-width: unset;
       float: left;
       min-width: 100%;
-      overflow: initial;
       position: relative;
     `};
   }

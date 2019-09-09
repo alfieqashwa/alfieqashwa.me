@@ -3,12 +3,12 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import liveTheme from "prism-react-renderer/themes/shadesOfPurple";
-// import theme from "prism-react-renderer/themes/nightOwl";
+import theme from "prism-react-renderer/themes/nightOwl";
 
 import Icons from "@narative/gatsby-theme-novela/src/icons";
 import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
 import { copyToClipboard } from "@narative/gatsby-theme-novela/src/utils";
-import { LangsIcon } from './LangsIcon'
+import { LangsIcon, preStyles } from './LangsIcon'
 
 const RE = /{([\d,-]+)}/;
 
@@ -45,7 +45,7 @@ function CodePrism({ codeString, language, metastring, ...props }) {
     );
   } else {
     return (
-      <Highlight {...defaultProps} code={codeString} language={language}>
+      <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
         {({ className, tokens, getLineProps, getTokenProps }) => {
           return (
             <div style={{ overflow: "auto" }}>
@@ -138,8 +138,8 @@ const CopyButton = styled.button`
     position: absolute;
     left: -2%;
     top: -2%;
-    width: 104%;
-    height: 104%;
+    width: 100%;
+    height: 100%;
     border: 2px solid ${p => p.theme.colors.accent};
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.01);
@@ -155,7 +155,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 750px;
   margin: 0 auto;
-  font-size: 13px;
+  font-size: 14px;
   margin: 15px auto 50px;
   border-radius: 5px;
   font-family: ${p => p.theme.fonts.monospace} !important;

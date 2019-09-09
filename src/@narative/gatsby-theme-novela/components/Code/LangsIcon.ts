@@ -5,7 +5,7 @@ const LanguageHighlight = css`
   border-radius: 0 0 4px 4px;
   font-weight: 500;
   /* font-size: 0.75rem; */
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
     Courier New, monospace;
   letter-spacing: 0.1em;
