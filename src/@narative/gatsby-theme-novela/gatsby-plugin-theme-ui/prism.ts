@@ -1,8 +1,6 @@
 export default {
   token: `#fff`,
   languageJavascript: `#e8696b`,
-  languageJSX: `#e8696b`,
-  jsx: `#e8696b`,
   javascript: `#e8696b`,
   background: `#061526`,
   comment: `#5e6a76`,
@@ -27,7 +25,6 @@ export default {
   propertyAccess: `#fff`,
   namespace: `#b2ccd6`,
   highlight: `rgba(255,255,255,0.07)`,
-  // highlightBorder: `#e1bde2`,
   highlightBorder: `#d23669`,
   dom: `#5F8DC3`,
   operator: `#5FA8AA`,
