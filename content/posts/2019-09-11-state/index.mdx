@@ -1,0 +1,54 @@
+---
+title: State
+author: Alfie Qashwa
+date: 2019-09-11
+hero: ./images/hero.jpeg
+excerpt: Props menjembatani komunikasi antar component dalam library React.
+---
+
+import ArticleState from '../../components/ArticleState'
+
+# State
+
+`Click button` di bawah ini, atau TEKAN jika kamu mengakses blog ini melalui `mobile browser`.
+
+<div className="Image__Small">
+  <ArticleState.ToggleShowHide>
+    <ArticleState.Clock />
+  </ArticleState.ToggleShowHide>
+</div>
+
+Kalo kamu `ngeh`, di sudut kanan atas ada icon matahari / bulan yang jika di tekan / atau di klik maka tampilan warna pada blog ini berubah menjadi mode dark dan atau sebaliknya.
+
+<div className="Image__Small">
+  <img
+    src="./images/light.png"
+    title="Light Icon"
+    alt="Light Icon"
+  />
+</div>
+
+<div className="Image__Small">
+  <img
+    src="./images/dark.png"
+    title="Dark Icon"
+    alt="Dark Icon"
+  />
+</div>
+
+---
+
+Pada [Artikel sebelumnya](/props) tentang props, kita hanya membahas `dummy` component yang hanya memiliki fungsi menerima data dari `parent component`. Sifatnya dapat dikatakan `read-only`, tidak berinteraksi dengan user.
+
+Sedangkan tombol / `button` di awal artikel ini, juga `toggle light/dark mode` yang terletak di sudut kanan atas pada website ini di buat oleh component yang dapat berinteraksi dan memberikan respons dengan user -- tepatnya bereaksi, probably that's why it's called `React`.
+
+Sebelum Oktober 2018, interaktif component hanya dapat di buat dengan `class`, dinamakan `stateful component`, dibedakan dengan `dummy component` yang dinamakan `stateless component`.
+Namun setelah diperkenalkan Hooks pada Oktober 2018 dengan React versi 16.7(alpha), kita dapat membuat interaktif component dengan menggunakan `function`.
+
+Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful component` dengan menggunakan `class` sangat diperlukan untuk dapat memahami apa itu Hooks. Tanpa pemahaman itu, kita tidak tahu `benefit` yang terdapat pada `React Hooks`.
+
+`Class` telah dibahas pada [artikel yang lalu](/classes), sila baca jika lupa.
+
+<div className="Image__Medium">
+  <ArticleState.Counter />
+</div>
