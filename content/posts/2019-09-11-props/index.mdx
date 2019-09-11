@@ -1,0 +1,91 @@
+---
+title: Props
+author: Alfie Qashwa
+date: 2019-09-11
+hero: ./images/hero.jpeg
+excerpt: Props menjembatani komunikasi antar komponen dalam library React.
+---
+
+import CodeSandbox from '../../components/PropsCodeSandbox'
+
+# Mengenal Props
+
+Component ibarat `function`, dimana memiliki property atau props untuk menerima data.
+
+```jsx
+function Duhai(props) {
+  return <h2>Duhai, {props.name}</h2>;
+}
+```
+
+`Component` di atas dinamakan `function components`.
+
+Cara lain adalah dengan menggunakan `class`:
+
+```jsx
+class Duhai extends React.Component {
+  render() {
+    return <h2>Duhai, {this.props.name}</h2>;
+  }
+}
+```
+
+Paradigma `Component` seperti yang telah dijelaskan pada artikel sebelumnya adalah `composing`, membuat partikel-partikel `component` yang disusun menjadi bangunan aplikasi. Mirip seperti konsep `Lego`.
+
+```jsx
+function Duhai(props) {
+  return <h2>Duhai {props.name}</h2>;
+}
+
+class App extends React.Component {
+  render() {
+    return(
+      <>
+        <Duhai name="Xinta" />
+        <Duhai name="Neng Nada" />
+        <Duhai name="Anushka Sharma" />
+      </>
+    )
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+```
+
+Variasi lain penulisan `function components` dengan menggunakan `arrow function`:
+
+```jsx
+const Duhai = props => {
+  return <h2>Duhai {props.name} />;
+}
+```
+
+Jika hanya ada satu statement dalam `scope`, maka gunakan `()` dan hilangkan `return`.
+
+```jsx
+const Duhai = props => (
+  <h2>Duhai {props.name} />;
+);
+```
+
+Atau gunakan `destructuring` untuk meringkasnya (walau terkadang agak sulit difahami jika tidak terbiasa dengan [destructuring](/destructuring)):
+
+```jsx
+const Duhai = ({ name }) => <h2>Duhai {name} />;
+);
+```
+
+Like so...
+
+<div className="Image__Medium">
+  <CodeSandbox />
+</div>
+
+---
+
+Guk Nite...
+
+🌙 🌙 🌙 🌙 🌙
