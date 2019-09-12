@@ -59,7 +59,7 @@ Variasi lain penulisan `function components` dengan menggunakan `arrow function`
 
 ```jsx
 const Duhai = props => {
-  return <h2>Duhai {props.name} </h2>;
+  return <h2>Duhai {props.name}</h2>;
 }
 ```
 
@@ -67,14 +67,14 @@ Jika hanya ada satu statement dalam `scope`, maka gunakan `()` dan hilangkan `re
 
 ```jsx
 const Duhai = props => (
-  <h2>Duhai {props.name} </h2>;
+  <h2>Duhai {props.name}</h2>;
 );
 ```
 
 Atau gunakan `destructuring` untuk meringkasnya (walau terkadang agak sulit difahami jika tidak terbiasa dengan [destructuring](/destructuring)):
 
 ```jsx
-const Duhai = ({ name }) => <h2>Duhai {name} </h2>;
+const Duhai = ({ name }) => <h2>Duhai {name}</h2>;
 );
 ```
 

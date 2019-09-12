@@ -3,12 +3,12 @@ title: State
 author: Alfie Qashwa
 date: 2019-09-11
 hero: ./images/hero.jpeg
-excerpt: Props menjembatani komunikasi antar component dalam library React.
+excerpt: State digunakan untuk menciptakan aplikasi yang interaktif dengan user.
 ---
 
 import ArticleState from '../../components/ArticleState'
 
-# State
+# Mengenal State
 
 `Click button` di bawah ini, atau TEKAN jika kamu mengakses blog ini melalui `mobile browser`.
 
@@ -26,9 +26,6 @@ Kalo kamu `ngeh`, di sudut kanan atas ada icon matahari / bulan yang jika di tek
     title="Light Icon"
     alt="Light Icon"
   />
-</div>
-
-<div className="Image__Small">
   <img
     src="./images/dark.png"
     title="Dark Icon"
@@ -36,19 +33,146 @@ Kalo kamu `ngeh`, di sudut kanan atas ada icon matahari / bulan yang jika di tek
   />
 </div>
 
----
-
 Pada [Artikel sebelumnya](/props) tentang props, kita hanya membahas `dummy` component yang hanya memiliki fungsi menerima data dari `parent component`. Sifatnya dapat dikatakan `read-only`, tidak berinteraksi dengan user.
 
-Sedangkan tombol / `button` di awal artikel ini, juga `toggle light/dark mode` yang terletak di sudut kanan atas pada website ini di buat oleh component yang dapat berinteraksi dan memberikan respons dengan user -- tepatnya bereaksi, probably that's why it's called `React`.
+Sedangkan tombol / `button` di awal artikel ini berikut jamnya, juga `toggle light/dark mode` yang terletak di sudut kanan atas pada website ini -- atau jika menggunakan `mobile browser`, terletak di bawah gambar di awal artikel ini  -- di buat oleh component yang dapat berinteraksi dan memberikan respons dengan user -- tepatnya bereaksi, probably that's why it's called `React`.
 
 Sebelum Oktober 2018, interaktif component hanya dapat di buat dengan `class`, dinamakan `stateful component`, dibedakan dengan `dummy component` yang dinamakan `stateless component`.
 Namun setelah diperkenalkan Hooks pada Oktober 2018 dengan React versi 16.7(alpha), kita dapat membuat interaktif component dengan menggunakan `function`.
 
-Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful component` dengan menggunakan `class` sangat diperlukan untuk dapat memahami apa itu Hooks. Tanpa pemahaman itu, kita tidak tahu `benefit` yang terdapat pada `React Hooks`.
+Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful component` dengan menggunakan `class` sangat diperlukan untuk dapat memahami apa itu Hooks. Tanpa pemahaman itu, kita tidak tahu manfaat-manfaat yang terdapat pada `React Hooks`.
 
-`Class` telah dibahas pada [artikel yang lalu](/classes), sila baca jika lupa.
+`Class` telah dibahas pada [artikel yang lalu](/classes), mudah-mudahan dapat membantu memahami artikel ini yang khusus untuk membahas `Stateful Class Component`.
+
+---
+
+## Counter
+
+Kita akan membuat aplikasi interaktif sederhana dimana sebuah angka secara `default` bernilai NOL yang akan bertambah atau berkurang SATU manakala user mengklik atau menekan salah satu dari dua tombol `(-)` dan `(+)`, sedangkan tombol `Reset` yang terletak di antara kedua tombol tersebut berfungsi mengembalikan nilai angka ke nilai `default`nya. Tombol `Reset` tidak dapat di-klik atau ditekan -- serta warnanya berubah menjadi abu-abu -- hanya jika angka bernilai NOL.
 
 <div className="Image__Medium">
   <ArticleState.Counter />
 </div>
+
+Asumsi kamu membuat project dengan menggunakan `boilerplate` `react-create-app` yang pernah dijelaskan pada [artikel lalu](/create-react-app);
+
+```bash
+npx create-react-app react-counter
+
+cd react-counter
+
+npm run start
+
+ // or use yarn; it's facebook's npm
+yarn start
+```
+
+`localhost:3000` secara otomatis akan terbuka di `default browser` kamu.
+
+Hapus semua code di file `App.js`, `rename` menjadi `Counter.js` dan kita tuliskan satu persatu baris `code` berikut penjelasannya.
+
+```jsx
+import React from 'react';
+
+class Counter extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>0</h2>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+`Stateful Class Components` merupakan `extending` dari `Class React` pada `library`-nya.
+Sering kita menemukan para developer menuliskan seperti ini...
+
+```jsx {1,3}
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  render() {
+    return (
+        ...
+    );
+  }
+}
+
+export default Counter;
+```
+...mungkin biar ga `cape` aja kalo dalam satu file terdapat banyak `class components`.
+
+Fungsi `import` adalah untuk meminjam `class atau function` yang terdapat pada suatu `library` atau pada file lain yang diperlukan dalam sebuah file. Sedangkan fungsi `export` digunakan agar file ini dapat diakses oleh file lainnya. Pada contoh ini, file `index.js` memerlukan file ini.
+
+Dalam satu file kita dapat memiliki banyak `export` tetapi hanya diperbolehkan satu `default export`.
+
+Code di atas baru difungsikan secara `presentatif`, menuliskan kata `Counter` dan angka `0` secara `hard-coded`. Oleh sebab kita ingin angka tersebut dapat diubah secara interaktif bergantung tombol mana yang ditekan oleh `user`, maka penulisan `hard-coded` di atas kita modifikasi menjadi:
+
+```jsx {7,13}
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 0 };
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+Jika kamu liat di browser kamu, maka secara visual tidak ada yang berbeda, hanya saja angka `0` kini memiliki potensi untuk di ubah oleh `user`.
+Sekarang kita buat tiga tombol `(-)`, `Reset`, dan `(+)`.
+
+```jsx {14-16}
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 0 };
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button type="button">-</button>
+        <button type="button">Reset</button>
+        <button type="button">+</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+`method constructor` dan `super` lebih merupakan aturan dalam `JavaScript` alih-alih `React`, sebagaimana telah dibahas pada [artikel sebelumnya](/classes). Sedangkan `type="button"` -- `entahlah`, sifatnya opsional, hanya mengikuti disiplin `HTML` belaka.
+
+Code di atas akan menghasilkan view seperti di bawah ini -- TAPI TANPA WARNA YAHH -- namun angka `default` tidak berubah manakala kita tekan tombol `(-)` atau `(+)`.
+Untuk dapat menjadikannya interaktif, kita memerlukan seorang biduan cuantik nan mempesona bernama `setState`.
+
+<div className="Image_Small">
+  <ArticleState.CounterOnlyView />
+</div>
+
+---
+
+## `setState`
+
+...to be continued for a while....
