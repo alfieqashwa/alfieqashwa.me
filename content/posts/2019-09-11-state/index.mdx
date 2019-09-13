@@ -35,12 +35,13 @@ Kalo kamu `ngeh`, di sudut kanan atas ada icon matahari / bulan yang jika di tek
 
 Pada [Artikel sebelumnya](/props) tentang props, kita hanya membahas `dummy` component yang hanya memiliki fungsi menerima data dari `parent component`. Sifatnya dapat dikatakan `read-only`, tidak berinteraksi dengan user.
 
-Sedangkan tombol / `button` di awal artikel ini berikut jamnya, juga `toggle light/dark mode` yang terletak di sudut kanan atas pada website ini -- atau jika menggunakan `mobile browser`, terletak di bawah gambar di awal artikel ini  -- di buat oleh component yang dapat berinteraksi dan memberikan respons dengan user -- tepatnya bereaksi, probably that's why it's called `React`.
+Sedangkan tombol / `button` di awal artikel ini berikut jam, juga `toggle light/dark mode` yang terletak di sudut kanan atas pada website ini -- atau jika menggunakan `mobile browser`, terletak di bawah gambar di awal artikel ini  -- di buat oleh component yang dapat berinteraksi dan memberikan respons dengan user -- tepatnya bereaksi.
+Probably that's why it's called `React`.
 
 Sebelum Oktober 2018, interaktif component hanya dapat di buat dengan `class`, dinamakan `stateful component`, dibedakan dengan `dummy component` yang dinamakan `stateless component`.
-Namun setelah diperkenalkan Hooks pada Oktober 2018 dengan React versi 16.7(alpha), kita dapat membuat interaktif component dengan menggunakan `function`.
+Namun setelah diperkenalkan `React Hooks` pada Oktober 2018 React versi 16.7(alpha), kita dapat membuat interaktif component dengan menggunakan `function`.
 
-Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful component` dengan menggunakan `class` sangat diperlukan untuk dapat memahami apa itu Hooks. Tanpa pemahaman itu, kita tidak tahu manfaat-manfaat yang terdapat pada `React Hooks`.
+Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful component` dengan menggunakan `class` sangat diperlukan untuk dapat memahami apa itu Hooks. Tanpa pemahaman tsb, kita tidak tahu manfaat-manfaat yang terdapat pada `React Hooks`.
 
 `Class` telah dibahas pada [artikel yang lalu](/classes), mudah-mudahan dapat membantu memahami artikel ini yang khusus untuk membahas `Stateful Class Component`.
 
@@ -48,13 +49,13 @@ Hooks akan dibahas pada artikel selanjutnya, tetapi pemahaman tentang `stateful 
 
 ## Counter
 
-Kita akan membuat aplikasi interaktif sederhana dimana sebuah angka secara `default` bernilai NOL yang akan bertambah atau berkurang SATU manakala user mengklik atau menekan salah satu dari dua tombol `(-)` dan `(+)`, sedangkan tombol `Reset` yang terletak di antara kedua tombol tersebut berfungsi mengembalikan nilai angka ke nilai `default`nya. Tombol `Reset` tidak dapat di-klik atau ditekan -- serta warnanya berubah menjadi abu-abu -- hanya jika angka bernilai NOL.
+Kita akan membuat aplikasi interaktif sederhana dimana sebuah angka secara `default` bernilai NOL yang nilainya akan bertambah atau berkurang SATU manakala user mengklik atau menekan salah satu dari dua tombol `(-)` dan `(+)`. Sedangkan tombol `Reset` yang terletak di antara kedua tombol tersebut berfungsi mengembalikan nilai angka ke nilai `default`. Tombol `Reset` tidak dapat di-klik atau ditekan -- serta warnanya berubah menjadi abu-abu -- hanya ketika angka bernilai NOL.
 
 <div className="Image__Medium">
   <ArticleState.Counter />
 </div>
 
-Asumsi kamu membuat project dengan menggunakan `boilerplate` `react-create-app` yang pernah dijelaskan pada [artikel lalu](/create-react-app);
+Asumsi kamu membuat project dengan menggunakan `boilerplate react-create-app` yang pernah dijelaskan pada [artikel lalu](/create-react-app).
 
 ```bash
 npx create-react-app react-counter
@@ -104,7 +105,7 @@ class Counter extends Component {
 
 export default Counter;
 ```
-...mungkin biar ga `cape` aja kalo dalam satu file terdapat banyak `class components`.
+...biar ga `cape` jikalau dalam satu file terdapat banyak `class components`.
 
 Fungsi `import` adalah untuk meminjam `class atau function` yang terdapat pada suatu `library` atau pada file lain yang diperlukan dalam sebuah file. Sedangkan fungsi `export` digunakan agar file ini dapat diakses oleh file lainnya. Pada contoh ini, file `index.js` memerlukan file ini.
 
@@ -164,8 +165,8 @@ export default Counter;
 
 `method constructor` dan `super` lebih merupakan aturan dalam `JavaScript` alih-alih `React`, sebagaimana telah dibahas pada [artikel sebelumnya](/classes). Sedangkan `type="button"` -- `entahlah`, sifatnya opsional, hanya mengikuti disiplin `HTML` belaka.
 
-Code di atas akan menghasilkan view seperti di bawah ini -- TAPI TANPA WARNA YAHH -- namun angka `default` tidak berubah manakala kita tekan tombol `(-)` atau `(+)`.
-Untuk dapat menjadikannya interaktif, kita memerlukan seorang biduan cuantik nan mempesona bernama `setState`.
+Code di atas akan menghasilkan view seperti di bawah ini, namun angka `default` belum dapat diubah manakala kita tekan tombol `(-)` atau `(+)`.
+Untuk dapat menjadikannya interaktif, kita memerlukan seorang biduan cuantik nan memesona bernama `setState`.
 
 <div className="Image_Small">
   <ArticleState.CounterOnlyView />
@@ -175,4 +176,128 @@ Untuk dapat menjadikannya interaktif, kita memerlukan seorang biduan cuantik nan
 
 ## `setState`
 
-...to be continued for a while....
+Dalam aplikasi Counter ini, kita tugaskan `setState` untuk melakukan update manakala `user` menekan ketiga tombol yang dipresentasikan secara visual pada browser.
+
+> "Hey `setState`! Jika `user` klik tombol `(+)`, tambahkan menjadi angka satu. Demikian sebaliknya, kurangkan satu apapun apapun nilai manakala `user` klik tombol `(-)`. Dan balikkan nilai angka ke keadaan defaultnya manakala `user` menekan tombol `Reset`."
+
+So, let's start to increment the number...
+
+```jsx {8-12,20}
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button type="button">-</button>
+        <button type="button">Reset</button>
+        <button type="button" onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+setState umumnya -- dan lebih `savety` dituliskan dalam sebuah `function`. `function` di dalam suatu `class` dinamakan `method`; kita tidak perlu menuliskan `keyword function` di dalam `class`.
+
+Logika `method` yang kita beri nama `increment` pada `code` di atas adalah:
+- Tambahkan satu angka pada apapun nilai counter.
+- Tambahkan `method` di dalam `onClick` pada `button` yang mewakilkan penambahan/increment sehingga eksekusi terjadi manakala `user` mengklik tombol/button tersebut.
+
+```jsx {10-14,20}
+import React, { Component } from 'react';
+
+  ...
+
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+  decrement() {
+    this.setState({
+      count: this.state.count - 1
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button type="button" onClick={this.decrement}>-</button>
+        <button type="button">Reset</button>
+        <button type="button" onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+
+  ...
+```
+
+Kemudian kita buat satu `method` lagi bernama `decrement` seperti `method` `increment`, dengan `statement` matimatika berbeda.
+
+Sekarang bagaimana kita mengkonfigurasi tombol `Reset` ?
+
+```jsx {5-9,16}
+import React, { Component } from 'react';
+
+  ...
+
+  reset() {
+    this.setState({
+      count: this.state.count * 1
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button type="button" onClick={this.decrement}>-</button>
+        <button type="button" onClick={this.reset}>Reset</button>
+        <button type="button" onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+
+  ...
+```
+
+Bilangan apapun jika dikalikan `0` akan menghasilkan `0` -- agar angka kembali ke nilai `default`.
+
+> It's a hacky but... at least it works for this case.
+
+Pada saat angka counter bernilai NOL, kita ingin tombol `Reset` dalam keadaan `disabled`.
+
+```jsx {5}
+...
+
+  <button
+    type="button"
+    disabled={this.state.count === 0}
+    onClick={this.reset}
+  >
+    Reset
+  </button>
+
+...
+```
+
+## W.I.P
+
+`this` && `bind(this)`
+
+...to be continued...

@@ -8,8 +8,8 @@ function Button(props) {
       sx={{
         color: 'hotpink',
         background: 'papayawhip',
-        fontSize: '28px',
-        padding: '2px 12px',
+        fontSize: '36px',
+        padding: '2px 18px',
         border: '1px 9px',
         borderRadius: '4px',
         ':disabled': {
