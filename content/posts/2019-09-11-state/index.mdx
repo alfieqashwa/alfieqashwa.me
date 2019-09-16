@@ -375,17 +375,17 @@ class Counter extends Component {
     // we do not need to write bind(this)
     // in here anymore
   }
-  const increment = () => {
+  increment = () => {
     this.setState({
       count: this.state.count + 1
     })
   }
-  const decrement = () => {
+  decrement = () => {
     this.setState({
       count: this.state.count - 1
     })
   }
-  const reset = () => {
+  reset = () => {
     this.setState({
       count: this.state.count * 0
     })

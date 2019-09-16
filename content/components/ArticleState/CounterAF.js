@@ -36,19 +36,19 @@ class CounterAF extends Component {
     this.state = { count: 0 };
   }
 
-  handleIncrement = () => {
+  increment = () => {
     this.setState({
       count: this.state.count + 1
     });
   };
 
-  handleDecrement = () => {
+  decrement = () => {
     this.setState({
       count: this.state.count - 1
     });
   };
 
-  handleReset = () => {
+  reset = () => {
     this.setState({
       count: this.state.count * 0
     });
@@ -75,13 +75,13 @@ class CounterAF extends Component {
         >
           {count}
         </h2>
-        <Button handleClick={this.handleDecrement}>-</Button>
+        <Button handleClick={this.decrement}>-</Button>
         {'  '}
-        <Button handleDisabled={count === 0} handleClick={this.handleReset}>
+        <Button handleDisabled={count === 0} handleClick={this.reset}>
           Reset
         </Button>
         {'  '}
-        <Button handleClick={this.handleIncrement}>+</Button>
+        <Button handleClick={this.increment}>+</Button>
       </div>
     );
   }
