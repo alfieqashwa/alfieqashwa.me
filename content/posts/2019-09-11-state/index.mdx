@@ -514,7 +514,7 @@ export default Counter;
 
 Versi lain dengan menggunakan fitur [destructuring](/destructuring) _plus_ [arrow function](/arrow-function):
 
-```jsx
+```jsx {4-6,11-12,14,25,30,35,41,46,53}
 import React, { Component, Fragment } from 'react';
 
 const Button = ({
@@ -539,17 +539,17 @@ class Counter extends Component {
 
     this.state = { count: 0 };
   }
-  increment() {
+  increment = () => {
     this.setState({
       count: this.state.count + 1
     });
   }
-  decrement() {
+  decrement = () => {
     this.setState({
       count: this.state.count - 1
     });
   }
-  reset() {
+  reset = () => {
     this.setState({
       count: this.state.count * 0
     });

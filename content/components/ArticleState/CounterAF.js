@@ -2,7 +2,8 @@
 import { Component } from 'react';
 import { jsx } from 'theme-ui';
 
-function Button(props) {
+// Testing using Arrow Function & Destructuring
+const Button = ({ handleDisabled, handleClick, children }) => {
   return (
     <button
       sx={{
@@ -20,43 +21,42 @@ function Button(props) {
         }
       }}
       type="button"
-      disabled={props.handleDisabled}
-      onClick={props.handleClick}
+      disabled={handleDisabled}
+      onClick={handleClick}
     >
-      {props.children}
+      {children}
     </button>
   );
-}
+};
 
 class CounterAF extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
 
-    this.handleIncrement = this.handleIncrement.bind(this);
-    this.handleDecrement = this.handleDecrement.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+    this.state = { count: 0 };
   }
 
-  handleIncrement() {
+  handleIncrement = () => {
     this.setState({
       count: this.state.count + 1
     });
-  }
+  };
 
-  handleDecrement() {
+  handleDecrement = () => {
     this.setState({
       count: this.state.count - 1
     });
-  }
+  };
 
-  handleReset() {
+  handleReset = () => {
     this.setState({
       count: this.state.count * 0
     });
-  }
+  };
 
   render() {
+    const { count } = this.state;
+
     return (
       <div sx={{ textAlign: 'center' }}>
         <h1
@@ -73,14 +73,11 @@ class CounterAF extends Component {
             fontSize: '64px'
           }}
         >
-          {this.state.count}
+          {count}
         </h2>
         <Button handleClick={this.handleDecrement}>-</Button>
         {'  '}
-        <Button
-          handleDisabled={this.state.count === 0}
-          handleClick={this.handleReset}
-        >
+        <Button handleDisabled={count === 0} handleClick={this.handleReset}>
           Reset
         </Button>
         {'  '}
