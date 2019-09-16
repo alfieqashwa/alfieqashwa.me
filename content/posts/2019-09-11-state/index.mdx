@@ -163,10 +163,10 @@ class Counter extends Component {
 export default Counter;
 ```
 
-`method constructor` dan `super` lebih merupakan aturan dalam `JavaScript` alih-alih `React`, sebagaimana telah dibahas pada [artikel sebelumnya](/classes). Sedangkan `type="button"` -- `entahlah`, sifatnya opsional, hanya mengikuti disiplin `HTML` belaka.
+`methods constructor` dan `super` lebih merupakan aturan dalam `JavaScript` alih-alih `React`, sebagaimana telah dibahas pada [artikel sebelumnya](/classes). Sedangkan `type="button"` -- `entahlah`, sifatnya opsional, hanya mengikuti disiplin `HTML` belaka.
 
 Code di atas akan menghasilkan view seperti di bawah ini, namun angka `default` belum dapat diubah manakala kita tekan tombol `(-)` atau `(+)`.
-Untuk dapat menjadikannya interaktif, kita memerlukan seorang biduan cuantik nan memesona bernama `setState`.
+Untuk dapat menjadikannya interaktif, kita memerlukan `API` bernama `setState`.
 
 <div className="Image_Small">
   <ArticleState.CounterOnlyView />
@@ -211,11 +211,11 @@ class Counter extends Component {
 export default Counter;
 ```
 
-setState umumnya -- dan lebih `savety` dituliskan dalam sebuah `function`. `function` di dalam suatu `class` dinamakan `method`; kita tidak perlu menuliskan `keyword function` di dalam `class`.
+setState umumnya -- dan lebih `safety` dituliskan dalam sebuah `function`. `function` di dalam suatu `class` dinamakan `methods`; kita tidak perlu menuliskan `keyword function` di dalam `class`.
 
-Logika `method` yang kita beri nama `increment` pada `code` di atas adalah:
+Logika `methods` yang kita beri nama `increment` pada `code` di atas adalah:
 - Tambahkan satu angka pada apapun nilai counter.
-- Tambahkan `method` di dalam `onClick` pada `button` yang mewakilkan penambahan/increment sehingga eksekusi terjadi manakala `user` mengklik tombol/button tersebut.
+- Tambahkan `methods` di dalam `onClick` pada `button` yang mewakilkan penambahan/increment sehingga eksekusi terjadi manakala `user` mengklik tombol/button tersebut.
 
 ```jsx {10-14,20}
 import React, { Component } from 'react';
@@ -247,7 +247,7 @@ import React, { Component } from 'react';
   ...
 ```
 
-Kemudian kita buat satu `method` lagi bernama `decrement` seperti `method` `increment`, dengan `statement` matimatika berbeda.
+Kemudian kita buat satu `methods` lagi bernama `decrement` seperti `methods` `increment`, dengan `statement` matimatika berbeda.
 
 Sekarang bagaimana kita mengkonfigurasi tombol `Reset` ?
 
@@ -296,8 +296,302 @@ Pada saat angka counter bernilai NOL, kita ingin tombol `Reset` dalam keadaan `d
 ...
 ```
 
-## W.I.P
+`Counter App` tidak akan berjalan jika tidak ditambahkan `bind(this)` pada `constructor methods`.
 
-`this` && `bind(this)`
+```jsx {9-11}
+import React, { Component } from 'react';
 
-...to be continued...
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 0 };
+
+    this.increment = this.increment.bind(this);
+    this.decrement= this.decrement.bind(this);
+    this.reset= this.reset.bind(this);
+  }
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+  decrement() {
+    this.setState({
+      count: this.state.count - 1
+    })
+  }
+  reset() {
+    this.setState({
+      count: this.state.count * 0
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button
+          type="button"
+          onClick={this.decrement}
+        >
+          -
+        </button>
+        <button
+          type="button"
+          onClick={this.reset}
+          disabled={this.state.count === 0}
+        >
+          Reset
+        </button>
+        <button
+          type="button"
+          onClick={this.increment}
+        >
+          +
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+Dalam `JavaScript`, `class methods` tidak di [bound](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) secara `default`. Pembahasan mendalam sila pelajari tentang `awkward` nya `class` dalam bahasa pemograman `JavaScript`.
+
+> "This is not React-specific behavior; it is a part of how functions work in JavaScript." - [ React Official Docs ](https://reactjs.org/docs/handling-events.html)
+
+Alternatif lain adalah dengan menuliskan `methods` menggunakan [arrow function](/arrow-function) sehingga kita tidak perlu menuliskan `bind(this)` di dalam `constructor methods`.
+
+```jsx {8-9,11,16,21}
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 0 };
+    // we do not need to write bind(this)
+    // in here anymore
+  }
+  const increment = () => {
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+  const decrement = () => {
+    this.setState({
+      count: this.state.count - 1
+    })
+  }
+  const reset = () => {
+    this.setState({
+      count: this.state.count * 0
+    })
+  }
+
+  ...
+
+}
+
+export default Counter;
+```
+
+Optional: Kita buat `component Button`, sekaligus mengimplementasikan apa yang pernah dijelaskan pada artikel sebelumnya tentang [Props](/props).
+
+```jsx
+...
+
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <button
+          type="button"
+          onClick={this.decrement}
+        >
+          -
+        </button>
+        <button
+          type="button"
+          onClick={this.reset}
+          disabled={this.state.count === 0}
+        >
+          Reset
+        </button>
+        <button
+          type="button"
+          onClick={this.increment}
+        >
+          +
+        </button>
+      </div>
+    );
+  }
+
+...
+```
+
+Contoh `Component Button`:
+
+```jsx
+function Button(props) {
+  return (
+    <button
+      type="button"
+      disabled={props.handleDisabled}
+      onClick={props.handleClick}
+    >
+      {props.children}
+    </button>
+  );
+}
+```
+
+Keseluruhan `code` pada `Counter App`:
+
+```jsx
+import React, { Component } from 'react';
+
+function Button(props) {
+  return (
+    <button
+      type="button"
+      disabled={props.handleDisabled}
+      onClick={props.handleClick}
+    >
+      {props.children}
+    </button>
+  );
+}
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.reset = this.reset.bind(this);
+  }
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+  decrement() {
+    this.setState({
+      count: this.state.count - 1
+    });
+  }
+  reset() {
+    this.setState({
+      count: this.state.count * 0
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+        <h2>{this.state.count}</h2>
+        <Button handleClick={this.decrement}>-</Button>
+        <Button
+          handleDisabled={this.state.count === 0}
+          handleClick={this.reset}
+        >
+          Reset
+        </Button>
+        <Button handleClick={this.increment}>+</Button>
+      </div>
+    );
+  }
+}
+
+export default Counter;
+```
+
+Versi lain dengan menggunakan fitur [destructuring](/destructuring) _plus_ [arrow function](/arrow-function):
+
+```jsx
+import React, { Component, Fragment } from 'react';
+
+const Button = ({
+    handleDisabled,
+    handleClick,
+    children
+  }) => {
+  return (
+    <button
+      type="button"
+      disabled={handleDisabled}
+      onClick={handleClick}
+    >
+      {children}
+    </button>
+  );
+}
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { count: 0 };
+  }
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  }
+  decrement() {
+    this.setState({
+      count: this.state.count - 1
+    });
+  }
+  reset() {
+    this.setState({
+      count: this.state.count * 0
+    });
+  }
+  render() {
+    const { count } = this.state;
+
+    return (
+      <Fragment>
+        <h1>Counter</h1>
+        <h2>{count}</h2>
+        <Button
+          handleClick={this.decrement}
+        >
+          -
+        </Button>
+        <Button
+          handleDisabled={count === 0}
+          handleClick={this.reset}
+        >
+          Reset
+        </Button>
+        <Button
+          handleClick={this.increment}
+        >
+          +
+        </Button>
+      </Fragment>
+    );
+  }
+}
+
+export default Counter;
+```
+
+
+<div className="Image_Large">
+  <ArticleState.Counter />
+</div>
+
+---
+
+Mudah-mudahan artikel ini dapat bermanfaat
+
+🎧 🎧 🎧 🎧 🎧 ...
