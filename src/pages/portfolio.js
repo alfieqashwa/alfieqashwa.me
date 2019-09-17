@@ -35,14 +35,14 @@ export default () => (
             <Card>
               <H2>Sabyan</H2>
               <Img src={Sabyan} alt="Sabyan Band" />
-              <P>Accountant Management System</P>
+              <P>Accounting Management System</P>
               <Anchor>Private Link: not allowed to share</Anchor>
             </Card>
             <Card>
               <H2>Kebab Alibaba</H2>
               <Img src={Kebab} alt="Kebab Alibaba" />
               <P>
-                Accountant, Manufacturing, Purchases, and Sales Management
+                Accounting, Manufacturing, Purchases, and Sales Management
                 System, 8 Warehouses, 20 Point of Sales.
               </P>
               <Anchor>http://alibabakebab.co</Anchor>
