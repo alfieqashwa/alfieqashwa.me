@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://www.alfieqashwa.me`,
     description: `Alfie Qashwa Personal Site to Learn In The Public.`,
     hero: {
-      heading: `Cello, World!`,
+      heading: 'Cello, World! <a href="/portfolio">Portfolio</a>',
 
       maxWidth: 652
     },
