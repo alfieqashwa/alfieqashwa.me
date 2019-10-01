@@ -125,7 +125,7 @@ const PrismCSS = p => css`
     max-width: 744px;
     margin: 0 auto;
     padding: 32px;
-    font-size: 13px;
+    font-size: 12px;
     margin: 15px auto 50px;
     border-radius: 5px;
     font-family: ${p.theme.fonts.monospace};
@@ -188,7 +188,7 @@ const PrismCSS = p => css`
     `};
 
     ${mediaqueries.phablet`
-      font-size: 10px;
+      font-size: 9px;
       border-radius: 0;
       margin: 0 auto 25px;
       padding: 25px 20px;

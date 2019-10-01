@@ -10,7 +10,7 @@ excerpt: Class dalam JavaScript tidak sama persis seperti Class dalam bahasa pem
 
 Berbeda dengan kebanyakan bahasa pemograman lain berbasis [ Object Oriented Programming ](https://en.wikipedia.org/wiki/Object-oriented_programming) atau `OOP` seperti `Python` atau `Java`, `class` dalam `JavaScript` dapat dikatakan semacam [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) dalam mendelegasikan perilaku `prototipe-based`, tidak seperti halnya -- atau dapat dikatakan berbeda -- dengan definisi tradisional `class` atau `oriented-class` yang terdapat dalam bahasa pemograman lain pada umumnya.
 
-### `The 'Real' typeof Classes`
+### The 'Real' typeof Classes
 
 Berikut merupakan contoh penulisan `class` dalam JavaScript:
 
@@ -33,7 +33,7 @@ console.log(typeof food) // object
 
 `JavaScript` lebih dikenal sebagai `functional programming language`, dimana jantungnya bahasa ini adalah `function`.
 
-### `Constructor as Method`
+### Constructor as Method
 
 ```javascript {2-6,9-13,22,26}
 class Food {
@@ -80,7 +80,7 @@ output: 26 ✅
 - `keyword` `new` dibutuhkan dalam meng-`instantiate` `class` dimana `argument` dapat ditulis di dalam tanda `()` setelah nama `class`
 - Seperti halnya `object`, memanggil suatu `method` di dalam `class` dibubuhkan tanda "." di antara nama `class` dengan nama `method` seperti terdapat pada contoh sebelumnya: `chicken_breast.protein`
 
-### `Anonymous Classes`
+### Anonymous Classes
 
 Penulisan `class` dapat ditulis tanpa nama -- seperti halnya `function` --, umumnya ditulis sekalian dideklarasikan menjadi sebuah nilai dalam sebuah variable.
 
@@ -91,7 +91,7 @@ const Food = class {
 }
 ```
 
-### `Constructor is a Special Method`
+### Constructor is a Special Method
 
 Seperti telah dijelaskan sebelumnya, cara memanggil suatu `method` yang terdapat di dalam `class` mirip seperti cara memanggil suatu `variable` di dalam suatu `object`, yaitu _`vehicle.displayType`_ pada contoh di bawah ini:
 
@@ -131,7 +131,7 @@ Car
 
 ...karena `constructor` merupakan `special method` di dalam `class`.
 
-### `Inheritance with extends and super()`
+### Inheritance with extends and super()
 
 Mewarisi atau `inherit` suatu `class` dapat dilakukan dengan penulisan `extends` `keyword` setelah nama `child class` seperti pada contoh berikut ini:
 
@@ -184,7 +184,7 @@ The base Vehicle
 This is Honda Jazz
 ```
 
-### `Method Override`
+### Method Override
 
 Kita dapat mengubah suatu `method` yang terdapat di dalam `parent class` dengan memanggil nama `method` tersebut di dalam `child class` seperti berikut ini:
 

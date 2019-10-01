@@ -15,7 +15,7 @@ Pertamakali ia muncul pada 2011, ketika [ Jordan Walke ](https://twitter.com/jor
 Tahun 2011 `React` digunakan di fitur `newsfeed` pada aplikasi `Facebook`, dan selanjutnya digunakan pada sistem aplikasi `Instagram`. Seiring waktu, `React` tumbuh berkembang hingga akhirnya `Facebook` memutuskan untuk menjadikannya `open source` pada Mei 2013 di [ JSConf US ](https://youtu.be/XxVg_s8xAms).
 Pada [JSConf](https://youtu.be/KVZ-P-ZI6W4) pada 2015, [React Native library](https://facebook.github.io/react-native/) diperkenalkan untuk mempermudah kebutuhan pengembangan perangkat `Android` dan `iOS`. Pada tahun yang sama, `React Native` di-`open source`-kan.
 
-### `Component-based`
+### Component-based
 
 `ReactJS` bukanlah sebuah `framework`. Ia merupakan sebuah `library` yang fokus dalam teknologi UI.
 Selain itu, `ReactJS` juga memberikan suatu paradigma baru dalam men-`develop user-interface` (UI) yang memengaruhi teknologi modern lainnya, dus merupakan `JavaScript library` paling populer yang mendapat lebih dari [ 100,000 stars di Github ](https://github.com/facebook/react).
@@ -23,7 +23,7 @@ Selain itu, `ReactJS` juga memberikan suatu paradigma baru dalam men-`develop us
 Memahami konsep `ReactJS` sangat membantu untuk membentuk `mental-model` dalam mempelajari teknologinya. Salah satu konsep utamanya adalah `component`.
 Ia dapat _dianalaogikan_ sebagai atom yang memiliki tugas tersendiri dalam mengelola dirinya sendiri sekaligus bersama `component-component` lain membentuk molekul untuk digabungkan menjadi sel-sel sebagai fondasi dalam menyusun organ-organ _data dan desain_ dalam men-`develop` `user interface`.
 
-### `Declarative Programming`
+### Declarative Programming
 
 Berikut beberapa `quotes` dari berbagai sumber memberikan penjelasan tentang _paradigma deklaratif_ dan _paradigma imperatif_ yang kiranya dapat membantu membentuk mental model dalam membedakan keduanya:
 
@@ -37,7 +37,7 @@ Berikut beberapa `quotes` dari berbagai sumber memberikan penjelasan tentang _pa
 
 > When writing React, it’s often good not to think of _how_ you want to accomplish a result, but instead _what_ the component should look like in it’s new state.
 
-### `Virtual DOM`
+### Virtual DOM
 
 [ VDOM ](https://reactjs.org/docs/faq-internals.html#what-is-the-virtual-dom) merupakan konsep `programming` dimana representasi ideal sebuah desain UI disimpan di dalam memori secara `virtual` yang kemudian disinkronkan dengan [ DOM ](https://www.w3schools.com/whatis/whatis_htmldom.asp). Pengibaratan yang saya fahami adalah ibarat membuat desain _denah biru (VDOM)_ suatu "bangunan" UI yang kemudian tugas `React` adalah mengimplementasikannya ke dalam _bangunan nyata (DOM)_.
 Manakala terjadi suatu perubahan desain -- katakanlah, mengubah sebuah pintu kamar mandi di kamar utama, alih-alih me-`render` seluruh infrastruktur bangunan yang merupakan proses jika kita menggunakan teknologi terdahulu seperti [JQuery](https://jquery.com/) dalam memanipulasi DOM secara langsung, `React` hanya me-`render` bagian bangunan yang ingin di ubah saja, -- dalam analogi ini adalah pintu kamar mandi di kamar utama.

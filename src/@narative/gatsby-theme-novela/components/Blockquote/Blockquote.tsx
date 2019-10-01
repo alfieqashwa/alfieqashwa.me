@@ -19,17 +19,17 @@ const Blockquote = styled.blockquote`
     padding-bottom: 0;
     width: 100%;
     margin: 0 auto;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 1.32;
     font-weight: bold;
 
     ${mediaqueries.tablet`
-      font-size: 24px;
+      font-size: 22px;
       padding: 0 180px;
     `};
 
     ${mediaqueries.phablet`
-      font-size: 26px;
+      font-size: 24px;
       padding: 0 20px 0 40px;
     `};
   }

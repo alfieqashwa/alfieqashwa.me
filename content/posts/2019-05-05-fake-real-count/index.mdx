@@ -8,7 +8,7 @@ excerpt: Para profesional IT manapun akan menyatakan bahwa ketiadaan validasi st
 
 import FakeRc from '../../components/FakeRc'
 
-## `Validasi CakNun Tentang Keadilan`
+## Validasi CakNun Tentang Keadilan
 
 "_`For GOD's Sake`_, hanya ada dua kemungkinan; berlaku adil atau zhalim, mencintai kejujuran atau membencinya. Kita sudah pantau gelagat [Ini Budi](). Boleh jadi masih tersisa beberapa keturunan [Suku Madyan](https://en.wikipedia.org/wiki/Midian) yang gemar mengurangi serta menambahi takaran timbangan _asal perut kenyang_. Namun itu soal lain. Soal utamanya adalah tentang `Validasi Keadilan` yang terletak dalam etika demokrasi bangsa ini dimana seluruh rakyat telah memilih kalian berdua -- [H. Bolot](https://id.wikipedia.org/wiki/Bolot) dan [H. Malih](https://id.wikipedia.org/wiki/Malih) yang telah tertulis jauh sebelum telapak kaki Adam menapak di atas bumi di dalam Kitab Lauh Mahfuz dalam satu bab berjudul `Presidential Treshold Conspiracy`."
 
@@ -22,11 +22,11 @@ Demikian wejangan [CakNun](https://www.caknun.com/) seorang `Negarawan Sejati` -
 
 ---
 
-## `This Article is WIP`
+## This Article is WIP
 
 `Fake Real Count App` adalah aplikasi `real count` untuk menampung data rakyat dalam memilih kandidat presiden antara [H. Bolot](https://id.wikipedia.org/wiki/Bolot) `versus` [H. Malih](https://id.wikipedia.org/wiki/Malih). Tujuan pembuatan aplikasi ini sebagai model edukasi untuk menjelaskan fungsi `Logika Perkondisian` dalam upaya meminimalisir kesalahan input `(human-error)` pada saat user melakukan proses `entry-data`.
 
-## `Conditional Statement In Validation Process`
+## Conditional Statement In Validation Process
 
 Proses perkondisian yang akan kita kupas di artikel ini, dalam bahasa teknis dinamakan `Proses Validasi`. Sejauh ini proses validasi pada `Fake Real Count App` membantu para petugas `entry-data`-- siapapun itu, tidak terkecuali puteri saya yang masih kelas 1 SD _pun_ -- dimana mereka `TIDAK DAPAT MEMASUKKAN DATA` apabila:
 
@@ -41,7 +41,7 @@ Sila test `Fake Real Count App` di bawah ini dan masukkan beberapa kemungkinan i
 
 ---
 
-## `Fake Real Count App`
+## Fake Real Count App
 
 ![PilPres](./images/pilpres.jpg)
 
@@ -51,7 +51,7 @@ Sila test `Fake Real Count App` di bawah ini dan masukkan beberapa kemungkinan i
 
 ---
 
-## `Booleans`
+## Booleans
 
 Sebelum membahas logika, baiknya dijelaskan `basic syntax` yang diperlukan dalam logika perkondisian.
 
@@ -72,7 +72,7 @@ let b = 'false'
 console.log(typeof b) // output: 'string'
 ```
 
-### `Logical Operators`
+### Logical Operators
 
 Ada tiga operator, biasa disebut `logical operators`. Ketiganya adalah:
 
@@ -80,7 +80,7 @@ Ada tiga operator, biasa disebut `logical operators`. Ketiganya adalah:
 - && - logical AND
 - || - logical OR
 
-#### `Negation`
+#### Negation
 
 Mirip-mirip kaum salaf 🙃, _jika sesuatu itu tidak benar, maka pastilah itu salah_. Negasi diwakilkan dengan tanda `!` dimana sangat mudah memahami fungsinya tanpa perlu penjelasan dengan membaca `code` berikut:
 
@@ -101,7 +101,7 @@ let b = !!false
 console.log(b) // output: false
 ```
 
-#### `Logical AND (&&) -- Logical OR (||)`
+#### Logical AND (&&) -- Logical OR (||)
 
 Ketika menggunakan `&&`, hasilnya akan selalu `true` jika _kedua_ `operand` bernilai `true`. Sedangkan ketika menggunakan `||`, hasilnya akan selalu `true` jika _salah satu_ `operand` bernilai `true`.
 
@@ -143,7 +143,7 @@ false && (false || true) && true;
 
 **precedence:** Tanda kurung `()` didahulukan sebelum tanda negasi `!` lalu kemudian tanda AND `&&` dan terakhir adalah tanda OR `||`.
 
-### `Comparison`
+### Comparison
 
 Laiknya matematika murni, `comparison operators` seperti `=, <, <=, >, >=` sering digunakan di dalam dunia programming. Namun ada perbedaan sedikit seperti simbol `=` ditulis dengan `==` dalam kebanyakan bahasa pemograman. Sedangkan `JavaScript` memiliki tanda `==` dan juga `===` dengan fungsi yang sedikit berbeda.
 
@@ -169,7 +169,7 @@ NaN == NaN  // 🔴 false
 
 ```
 
-## `Jika... Maka...`
+## Jika... Maka...
 
 > "Jika _hari hujan_, maka saya akan _membawa payung_."
 
@@ -200,7 +200,7 @@ if (hujan) {
 }
 ```
 
-## `if`, `else if`, `else`
+## if, else if, else
 
 Tapi bagaimana dengan kondisi kompleks atau berjenjang, seperti...
 
@@ -225,7 +225,7 @@ if (nonton) {
 
 Kira-kira gitu konsepnya...
 
-## `How To Validate FAKE Real Count App ?`
+## How To Validate FAKE Real Count App ?
 
 Validasi bukanlah hal yang asing karena sering kita temui dalam kehidupan sehari-hari. Kita tidak dapat mentransfer uang via ATM jika nomor rekening tidak sesuai atau jumlah nomornya kurang atau jumlah nominal transfer kurang dari batas minimal yang diizinkan. Kita tidak dapat memasukkan angka `CVV` pada kartu kredit jika angkanya _kurang dari atau lebih dari_ tiga. Kita tidak dapat melihat foto instagram akun yang di `setting private`, kecuali akun tersebut `folback` akun kita.
 
@@ -239,11 +239,11 @@ Sungguh hal yang aneh -- jika tidak boleh mengatakan `nonsense`, manakala [Siste
 
 Kita tidak ingin `user` atau para petugas `entri-data` menginput:
 
-#### `Tahap Pertama`
+#### Tahap Pertama
 - Selain angka / `numeric`
 - Angka lebih kecil dari bilangan NOL
 
-#### `Tahap Kedua`
+#### Tahap Kedua
 - Suara masing-masing paslon yang dijumlahkan tidak sama dengan jumlah Suara Sah
 - Total Keseluruhan Suara per TPS lebih dari 300 suara
 
@@ -285,10 +285,10 @@ Logika Perkondisian `FAKE Real Count App` adalah model simulasi validasi dari si
 
 Sila tes input data di `FAKE Real Count App` dengan berbagai kemungkinan dan kabari jika ditemukan `bugs`. Untuk melihat `source-code` aplikasi ini sila klik 👉 [my github](https://github.com/alfieqashwa/fake-real-count).
 
-##### `Prefer Browser: Mozilla, Chrome, Safari, Mobile-friendly & No need authentication`
+##### Prefer Browser: Mozilla, Chrome, Safari, Mobile-friendly & No need authentication
 ---
 
-## `Fake Real Count App`
+## Fake Real Count App
 
 ![PilPres](./images/pilpres.jpg)
 

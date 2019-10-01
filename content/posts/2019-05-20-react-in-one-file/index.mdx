@@ -12,20 +12,17 @@ import CelloCodepen from '../../components/CodepenReactInOneFile'
 
 Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatnya hanya dalam satu file saja. Cara ini tidak populer digunakan, tetapi dapat membantu dalam memahami konsep dasar React, terutama bagi para web developer yang biasa menggunakan Vanilla JS atau JQuery.
 
-## `Plan`
+## Plan
 
 1. Kita mulai dengan membuat satu file index.html
-2. Sisipkan tiga CDN di `head tag`:
-    - React
-    - ReactDOM
-    - Babel
+2. Sisipkan tiga CDN di `head tag`: React, ReactDOM, Babel.
 3. Buat satu div dengan id yang kita namakan `root`.
 4. Terakhir, buat sebuah `script tag` tempat dimana kita membuat `custom code`.
 
 
-## `Action`
+## Action
 
-#### `1st Step`
+#### 1st Step
 
 ```shell
 🔴 // create an html file
@@ -33,7 +30,7 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
   touch index.html
 ```
 
-#### `2nd Step`
+#### 2nd Step
 
 ```html {9-11}
 🔴 // add CDNs
@@ -54,7 +51,7 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
 </html>
 ```
 
-#### `3rd Step`
+#### 3rd Step
 
 ```html {9}
 🔴 // inside the body tag, create div tag and add "root" id
@@ -70,7 +67,7 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
 </html>
 ```
 
-#### `4th Step`
+#### 4th Step
 
 ```html {11-13}
 🔴 // add script tag
@@ -90,7 +87,7 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
 </html>
 ```
 
-#### `5th Step`
+#### 5th Step
 
 ```html {5-9,11}
 🔴 // write basic react code
@@ -109,7 +106,7 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
 // ...
 ```
 
-#### `All Code Inside File`
+#### All Code Inside File
 
 ```html
 <!DOCTYPE html>
@@ -142,15 +139,17 @@ Ada beberapa cara untuk setup React. Untuk permulaan, kita mulai dengan membuatn
 
 ### Result
 
-<div className="Image__Medium">
+<div className="Image__Small">
 <CelloCodepen />
 </div>
 
-##### `You can change "Cello World!" with your own world 👇 below...`
+---
+
+##### You can also change "Cello World!" with your own world 👇 below...
 
 ```js live
 render(
-  <h1>Cello World!</h1>
+  <h1 style={{ color: 'hotpink', textAlign: 'center' }}>Cello World!</h1>
 )
 ```
 

@@ -10,7 +10,7 @@ const LanguageHighlight = css`
     Courier New, monospace;
   letter-spacing: 0.1em;
   line-height: 1.3;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.6rem;
   position: absolute;
   left: 32px;
   text-align: left;

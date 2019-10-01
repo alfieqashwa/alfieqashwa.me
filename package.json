@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.8.1",
+    "@narative/gatsby-theme-novela": "^0.8.2",
     "@theme-ui/prism": "^0.2.29",
     "chart.js": "^2.8.0",
     "gatsby": "^2.15.11",

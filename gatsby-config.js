@@ -3,7 +3,7 @@ module.exports = {
     title: `Celloworld`,
     name: `Celloworld`,
     siteUrl: `https://www.alfieqashwa.me`,
-    description: `Alfie Qashwa Personal Site to Learn In The Public.`,
+    description: `Alfie Qashwa Personal Site to Learn In Public.`,
     hero: {
       heading: 'Cello, World! <a href="/portfolio">Portfolio</a>',
 
@@ -53,8 +53,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-134432059-1`,
-      },
-    },
+        trackingId: `UA-134432059-1`
+      }
+    }
   ]
-};
+}
