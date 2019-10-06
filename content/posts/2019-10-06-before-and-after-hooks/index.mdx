@@ -1,0 +1,81 @@
+---
+title: Before and After Hooks
+author: Alfie Qashwa
+date: 2019-10-06
+hero: ./images/hero.jpeg
+excerpt: React Stateful Component before and after Hooks
+---
+
+import LoveIs from '../../components/LoveIs'
+
+## Before Hooks
+
+Stateful Component hanya dapat ditulis dengan menggunakan `class`, sedangkan `function` hanya dapat membuat `Stateless Component` saja.
+
+```jsx {9,12,19,21,23}
+import React, { Component } from 'react'
+
+class LoveIs extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      question: "What is Love?"
+    }
+    this.myAnswer = this.myAnswer.bind(this)
+  }
+  myAnswer() {
+    this.setState({
+      question: "Love is a sweet misery!"
+    })
+  }
+  render() {
+    return (
+      <>
+        <p>{this.state.question}</p>
+        <button
+          onClick={this.myAnswer}
+        >
+          {this.myAnswer}
+        </button>
+      </>
+    )
+  }
+}
+// how many `this` in this component ? 🙄
+// but don't include `this` on this comment!
+```
+
+> The `this` keyword is one of the most confusing aspects of JavaScript but it plays an important role in React.
+
+## After Hooks
+
+React Hooks memungkinkan menuliskan `Stateful Component` dengan `function`.
+
+
+```jsx
+import React, { useState } from 'react'
+
+function LoveIs() {
+  const [quest, setQuest] = useState('What is Love?')
+  const myAnswer = () => (
+    setQuest('Love is a sweet misery!')
+  )
+  return (
+    <>
+      <p>{quest}</p>
+      <button
+        onClick={myAnswer}
+      >
+        ?
+      </button>
+    </>
+  )
+}
+// Can you see `this` besides on this comment?
+```
+
+Hooks pertamakali dirilis pada React 16.7 versi `alpha` dan `stable` sejak React 16.8.
+
+<div className="Image__Small">
+  <LoveIs />
+</div>
