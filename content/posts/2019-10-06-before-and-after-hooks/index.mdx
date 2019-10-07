@@ -47,6 +47,7 @@ class LoveIs extends Component {
 
 > The `this` keyword is one of the most confusing aspects of JavaScript but it plays an important role in React.
 
+
 ## After Hooks
 
 React Hooks memungkinkan menuliskan `Stateful Component` dengan `function`.
@@ -85,7 +86,7 @@ Hooks pertamakali dirilis pada React 16.7 versi `alpha` dan `stable` sejak React
 
 * `initial state value` ditulis di dalam properti `useState methods`
 * `key` nya ditulis di array pertama, dalam contoh adalah `count`
-* `setState` menggantikan fungsi `setState methods` dalam `class Component`
+* `setCount` menggantikan fungsi `setState methods` dalam `class Component`
 * Code di atas ditulis dengan [array-destructuring](/destructuring).
 
 ```jsx
@@ -95,7 +96,10 @@ const increment = () => {
   }
 ```
 
-Mari kita konversi `Counter App` yang kita buat pada [artikel sebelumnya](/state) dengan menggunakan metodologi `Class Stateful Component` ke dalam `React Hooks Functional Stateful Component`.
+Mari konversi `Counter App` yang telah di buat pada [artikel sebelumnya](/state) dengan menggunakan metodologi `Class Stateful Component` ke dalam `React Hooks Functional Stateful Component`.
+
+
+## Converting into Hooks
 
 ```jsx
 import React, { useState } from 'react'
