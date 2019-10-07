@@ -12,7 +12,7 @@ import LoveIs from '../../components/LoveIs'
 
 Stateful Component hanya dapat ditulis dengan menggunakan `class`, sedangkan `function` hanya dapat membuat `Stateless Component` saja.
 
-```jsx {9,12,19,21,23}
+```jsx {6,9,12,19,21,23}
 import React, { Component } from 'react'
 
 class LoveIs extends Component {
@@ -35,7 +35,7 @@ class LoveIs extends Component {
         <button
           onClick={this.myAnswer}
         >
-          {this.myAnswer}
+          Click Me
         </button>
       </>
     )
@@ -66,7 +66,7 @@ function LoveIs() {
       <button
         onClick={myAnswer}
       >
-        ?
+        Click Me
       </button>
     </>
   )
@@ -75,6 +75,91 @@ function LoveIs() {
 ```
 
 Hooks pertamakali dirilis pada React 16.7 versi `alpha` dan `stable` sejak React 16.8.
+
+`useState` adalah satu dari beberapa fitur dalam `React Hooks` yang memungkinkan kita untuk membuat `Stateful Component` dengan `function`.
+
+```jsx
+// 🔴 useState array-destructuring
+  const [count, setCount] = React.useState(0)
+```
+
+* `initial state value` ditulis di dalam properti `useState methods`
+* `key` nya ditulis di array pertama, dalam contoh adalah `count`
+* `setState` menggantikan fungsi `setState methods` dalam `class Component`
+* Code di atas ditulis dengan [array-destructuring](/destructuring).
+
+```jsx
+// 🔴 updating the current state
+const increment = () => {
+    setCount(count + 1)
+  }
+```
+
+Mari kita konversi `Counter App` yang kita buat pada [artikel sebelumnya](/state) dengan menggunakan metodologi `Class Stateful Component` ke dalam `React Hooks Functional Stateful Component`.
+
+```jsx
+import React, { useState } from 'react'
+
+// 🔴 child component...
+const Button = ({
+    handleDisabled,
+    handleClick,
+    children
+  }) => {
+  return (
+    <button
+      type="button"
+      disabled={handleDisabled}
+      onClick={handleClick}>
+      {children}
+    </button>
+  )
+}
+
+// 🔴 parent component...
+function CounterHooks() {
+  const [count, setCount] = useState(0)
+
+  const increment = () => {
+    setCount(count + 1)
+  }
+  const decrement = () => {
+    setCount(count - 1)
+  }
+  const reset = () => {
+    setCount(count * 0)
+  }
+  return (
+    <>
+      <h1>Counter</h1>
+      <h2>{count}</h2>
+      <Button
+        handleClick={decrement}
+      >
+        decrement
+      </Button>
+      <Button
+        handleDisabled={count === 0}
+        handleClick={reset}>
+        Reset
+      </Button>
+      <Button
+        handleClick={increment}
+      >
+        increment
+      </Button>
+    </>
+  )
+}
+
+export default CounterHooks
+```
+
+Meski `Function Stateful Component` tidak untuk menggantikan `Class Stateful Component`, tetapi React Hooks lebih `concise` dan metodologi ini memengaruhi hingga ke `library VueJS`.
+
+> "Hooks is like an electron when it was found lately that we thought atom was the smallest thing in the world", I guess [Dan Abramov](https://twitter.com/dan_abramov) was trying to say that on [React Conf October 2018](https://www.youtube.com/watch?v=V-QO-KO90iQ).
+
+---
 
 <div className="Image__Small">
   <LoveIs />

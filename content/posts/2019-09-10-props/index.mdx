@@ -24,6 +24,12 @@ Cara lain adalah dengan menggunakan `class`:
 
 ```jsx
 class Duhai extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      // initial value goes here...
+      }
+  }
   render() {
     return <h2>Duhai, {this.props.name}</h2>;
   }
