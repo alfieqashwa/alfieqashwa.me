@@ -6,9 +6,9 @@ hero: ./images/hero.jpeg
 excerpt: Lifecycle Concept using React Class Component and React Hooks
 ---
 
-Pada awal mempelajari `React`, saya kesulitan dalam memahami konsep `life-cycle`. Begitu banyak `methods` yang harus difahami -- dus di hapal. Penamaannya juga agak membingungkan, sebagian jarang digunakan dan menemukan pemaparan contoh-contohnya. Beberapa ternyata tidak akan dgunakan lagi pada `React version 17` yang mungkin di awal tahun akan segera di release.
+Pada awal mempelajari `React`, saya kesulitan dalam memahami konsep `life-cycle`. Begitu banyak `methods` yang harus difahami dus di hapal. Penamaannya _pun_ juga agak membingungkan, sebagian jarang digunakan dan pada saat awal-awal diperkenalkan hooks saya tambah bingung lagi. Disamping itu, beberapa `methods` ternyata akan tidak digunakan lagi di `React version 17` yang _mungkin_ awal tahun depan segera di release.
 
-Dalam [`Official Documentation`](https://reactjs.org/docs/react-component.html) dijelaskan seluruh `methods` dengan lengkap berikut [Lifecycle Diagramnya](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).
+Di [`Official Documentation`](https://reactjs.org/docs/react-component.html) dijelaskan seluruh `methods` dengan lengkap berikut [Lifecycle Diagramnya](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/). Namun harus serring di baca ulang dan melakukan eksperimen untuk mendapatkan pemahaman konsep agar lebih konkrit lagi. Tapi agaknya, otak saya yang agak-agak lemot. Untuk itulah tujuan utama menuliskan apa yang telah dan/atau tengah saya pelajari di blog ini.
 
 
 ## Analogi React Lifecycle
@@ -222,17 +222,17 @@ const Wrapper = ({ children }) => (
 function Counter() {
     const [count, setCount] = React.useState(0)
 
- React.useEffect(() => {
-   const interval = setInterval(() => {
-     setCount(c => c + 1)
-   }, 1000)
-   return () => clearInterval(interval)
+React.useEffect(() => {
+  const interval = setInterval(() => {
+    setCount(c => c + 1)
+  }, 1000)
+  return () => clearInterval(interval)
   }, [])
 
     return (
       <center style={{ fontSize: `64px` }}>
         <h1 style={{ color: `palevioletred` }}>
-          {this.state.count}
+          {this.state.count} // ⌚ out!!
         </h1>
       </center>
     )
