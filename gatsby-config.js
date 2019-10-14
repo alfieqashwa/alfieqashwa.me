@@ -51,6 +51,16 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-plantuml`
+          }
+        ]
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `UA-134432059-1`
