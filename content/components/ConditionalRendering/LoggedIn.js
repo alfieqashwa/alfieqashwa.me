@@ -13,7 +13,6 @@ function LoggedIn() {
         background: `papayawhip`,
         paddingTop: `3px`,
         paddingBottom: `10px`,
-        mx: `100px`,
         borderRadius: `10px`
       }}
     >
