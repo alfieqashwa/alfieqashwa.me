@@ -1,0 +1,536 @@
+---
+title: Conditional Rendering
+author: Alfie Qashwa
+date: 2019-10-16
+hero: ./images/hero.jpg
+excerpt: Pengenalan contoh-contoh pengkondisian yang sering digunakan dalam pemograman JavaScript dan / atau ES6 menggunakan library React
+---
+
+import ConditionalRendering from '../../components/ConditionalRendering'
+
+Perkondisian dalam `JavaScript` telah di bahas sepintas pada [artikel lalu](https://www.alfieqashwa.me/fake-real-count-app#booleans), namun tidak secara khusus. Jika Anda pernah mempelajari bahasa pemograman lain, `syntax if, else if, dan else` tidaklah berbeda jauh. Hanya saja `JavaScript` memiliki operator perkondisian `==` yang berbeda dengan bahasa pemograman lain.
+`==` dalam bahasa pemograman lain sama dengan `===` dalam bahasa pemograman `JavaScript`.
+
+```js
+100 == 100 // true
+100 == '100' ✅ // true
+
+99 === 99 // true
+99 === '99' // 🔴 false
+```
+
+Oleh sebab itu, gunakan operator `===` alih-alih `==` agar terhindar dari hasil yang tidak diharapkan.
+
+## if else Statement
+
+Katakanlah kita ingin membuat suatu perkondisian dimana ketika kita klik tombol `Log in`, maka teks di atas berubah menjadi _You are Logged In_ serta teks pada tombol berubah menjadi _Log out_.
+
+Demikian sebaliknya, manakala kita klik tombol _Log out_, maka teks di atas berubah menjadi _You are Logged Out_ dan teks pada tombol berubah menjadi _Log in_.
+
+<div className="Image__Small">
+  <ConditionalRendering.LoggedIn />
+</div>
+
+Perkondisian semacam ini digunakan pada tiap form aplikasi email dan media-sosial, namun pada contoh kita buat sesederhana mungkin sekedar untuk pemahaman perkondisian yang akan kita bahas lebih lanjut.
+
+Menggunakan `if else statement` kita dapat menuliskannya di dalam `render` tetapi di atas `return` seperti ini:
+
+```jsx {17-22,24-29,34,40}
+class LoggedIn extends Component {
+  constructor() {
+    super()
+
+    this.state = { isLoggedIn: true }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState({
+      isLoggedIn: !this.state.isLoggedIn
+    })
+  }
+
+  render() {
+
+    let displayText
+    if (this.state.isLoggedIn === true) {
+      displayText = 'in'
+    } else {
+      displayText = 'out'
+    }
+
+    let buttonText
+    if (this.state.isLoggedIn === true) {
+      buttonText = 'out'
+    } else {
+      buttonText = 'in'
+    }
+
+    return (
+      <div>
+        <h2>
+          You are Logged {displayText}
+        </h2>
+        <button
+          type="button"
+          onClick={this.handleClick}
+        >
+          Log {buttonText}
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+Atau lebih ringkas lagi, boleh juga ditulis seperti ini:
+
+
+```jsx {6,13}
+// ...
+
+  render() {
+
+    let displayText
+    if (this.state.isLoggedIn) {
+      displayText = 'in'
+    } else {
+      displayText = 'out'
+    }
+
+    let buttonText
+    if (this.state.isLoggedIn) {
+      buttonText = 'out'
+    } else {
+      buttonText = 'in'
+    }
+
+    return (
+
+// ...
+
+```
+
+***
+
+## Conditional Ternary Operator
+
+`EcmaScript 2015` atau biasa disebut `ES6` memperkenalkan `Conditional Ternary Operator` -- sebuah cara baru yang lebih `concise` dalam menuliskan perkondisian. Berikut konsepnya.
+
+```terminal
+// 🔴 _Syntax_
+
+condition ? exprIfTrue : exprIfFalse
+```
+
+Jika suatu kondisi bernilai _true_ maka ekspresi setelah tanda `?` dieksekusi. Sebaliknya, ekspresi tanda `:` di eksekusi jika kondisi bernilai `false`.
+
+Contoh:
+"Jika Neng Nada berusia di bawah 21 tahun, maka belum boleh _ta'aruf_. Jika sudah, maka _ta'aruf_ diperbolehkan."
+
+```js
+let age = 18;
+let usiaNengNada = (age < 21)
+  ? "Blom boleh ta'aruf. Sabar!"
+  : "ta'aruf diperbolehkan";
+
+console.log(usiaNengNada);
+// ✅ "Blom boleh ta'aruf. Sabar!"
+```
+
+Dengan menggunakan `conditional ternary operation` pada `component LoggedIn`, dapat kita tulis dengan cara berikut ini.
+
+```jsx {22-24,32-34}
+import React, { Component } from 'react'
+
+class LoggedIn extends Component {
+  constructor() {
+    super()
+
+    this.state = { isLoggedIn: true }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState({
+      isLoggedIn: !this.state.isLoggedIn
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>
+          You are Logged {
+            this.state.isLoggedIn
+            ? 'in'
+            : 'out'
+          }
+        </h2>
+        <button
+          type="button"
+          onClick={this.handleClick}
+        >
+          Log {
+            this.state.isLoggedIn
+            ? 'out'
+            : 'in'
+          }
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+* Karena `this.state.isLoggedIn` defaultnya bernilai `true`, maka ekspresi setelah tanda `?` dieksekusi.
+* Ketika tombol di klik, maka `function handleClick` yang terdapat `this.setState API` yang bertugas untuk mengubah `initialState` dengan metode `immutability` yang terdapat pada `constructor method` dijalankan.
+* Pada `this.setState` mengandung sebuah `object` yang memberikan perintah untuk mengubah `true` menjadi `false` dan `false` menjadi `true`
+* Perintah tersebut diwakilkan dengan simbol `!` yang termasuk sebagai `unary operator` -- dalam berbagai bahasa pemograman, termasuk `JavaScript` dinamakan [negasi](https://www.alfieqashwa.me/fake-real-count-app#negation).
+
+Menggunakan **negasi**, `code` di atas dapat ditulis seperti ini untuk menghasilkan ekspresi yang sama tanpa mengubah urutan ekspresi kondisi.
+
+```jsx {18-20}
+// ...
+
+render() {
+    return (
+      <div>
+        <h2>
+          You are Logged {
+            this.state.isLoggedIn
+            ? 'in'
+            : 'out'
+          }
+        </h2>
+        <button
+          type="button"
+          onClick={this.handleClick}
+        >
+          Log {
+            !this.state.isLoggedIn
+            ? 'in'
+            : 'out'
+          }
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+Menggunakan `Hooks Functional Component`, maka terbebaslah kita dengan urusan `this` dan `bind(this)`.
+
+```jsx
+import React, { useState } from 'react'
+
+function LoggedIn() {
+  const [
+      isLoggedIn,
+      setIsLoggedIn
+    ] = useState(true)
+
+  const handleClick = () => {
+    setIsLoggedIn(!isLoggedIn)
+  }
+
+  return (
+    <div>
+      <h2>
+        You are Logged {
+          isLoggedIn
+            ? 'in'
+            : 'out'
+          }
+        </h2>
+      <button
+      type="button"
+      onClick={handleClick}
+      >
+        Log {isLoggedIn ? 'out' : 'in'}
+      </button>
+    </div>
+  )
+}
+```
+
+## Optimasi
+
+Pada `handleClick method` disarankan untuk menuliskan `function` -- nama terserah tetapi umumnya para developer React menamakan `prevState` atau `previousState` untuk memberikan informasi tujuan fungsi tersebut -- agar `this.setState` _mengubah kondisi sebelumnya atau kondisi terakhir alih-alih mengubah `initialState`_ untuk optimasi `component` pada `render-render` berikutnya.
+
+
+### 🔴 Class Stateful Component
+
+```jsx {12-16}
+import React, { Component } from 'react'
+
+class LoggedIn extends Component {
+  constructor() {
+    super()
+
+    this.state = { isLoggedIn: true }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState(
+      prevState => ({
+        isLoggedIn: !prevState.isLoggedIn
+      })
+    )
+  }
+
+  render() {
+    const { isLoggedIn } = this.state
+    return (
+      <div>
+        <h2>
+          You are Logged
+          {isLoggedIn ? 'in' : 'out'}
+        </h2>
+        <button
+          type="button"
+          onClick={this.handleClick}
+        >
+          Log {isLoggedIn ? 'out' : 'in'}
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+### 🔴 Function Stateful Component
+
+```jsx {9-11}
+import React, { useState } from 'react'
+
+function LoggedIn() {
+  const [
+    isLoggedIn,
+    setIsLoggedIn] = useState(true)
+
+  const handleClick = () => {
+    setIsLoggedIn(
+      prevState => !prevState
+    )
+  }
+
+  return (
+    <div>
+      <h2>
+        You are Logged {
+          isLoggedIn
+          ? 'in'
+          : 'out'
+        }
+      </h2>
+      <button
+        type="button"
+        onClick={handleClick}
+      >
+        Log {isLoggedIn ? 'out' : 'in'}
+      </button>
+    </div>
+  )
+}
+```
+
+<div className="Image__Small">
+  <ConditionalRendering.LoggedIn />
+</div>
+
+***
+
+Pada saat component tengah berproses dalam `data fetching` yang berasal dari `external API` -- dimana memerlukan proses waktu beberapa detik, -- kita ingin memberikan respons kepada user bahwa proses `loading` sedang berlangsung. Maka diperlukan `conditional statement` untuk memberikan ekspresi seperti menampilkan teks atau berupa logo yang menginformasikan proses `loading` hingga proses `data fetching` telah sukses dan / atau `error`.
+
+Berikut adalah contoh tampilan sederhananya, dimana proses `data fetching external API` berlangsung 1,5 detik dan pada proses tersebut kita menginformasikan kepada user dengan teks `Loading...`
+
+<div className="Image__Small">
+  <ConditionalRendering.LoadingExample />
+</div>
+
+#### Contoh penulisan menggunakan `Class Stateful Component`:
+
+```jsx {27-29}
+import React, { Component } from 'react'
+
+// 🔴 parent component
+class LoadingExample extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  componentDidMount() {
+    // dummy fetch API timing
+    this.id = setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 1500)
+  }
+
+// another lifecycle methods...
+
+  render() {
+    return (
+      <div>
+        {this.state.isLoading
+          ? <Loading />
+          : <Welcome />}
+      </div>
+    )
+  }
+}
+
+// 🔴 children component
+const Loading = () =>
+  <p>Loading...</p>
+
+// 🔴 children component
+const Welcome = () =>
+  <h1>Welcome to Dummy API</h1>
+
+export default LoadingExample
+```
+
+#### Contoh penulisan menggunakan `Function Stateful Component`:
+
+```jsx {21-23}
+import React, {
+  useState,
+  useEffect
+  } from 'react'
+
+// 🔴 parent component
+function LoadingExample() {
+    const [
+      isLoading,
+      setIsLoading
+    ] = useState(true)
+
+useEffect(() => {
+  // dummy fetch API timing
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 1500)
+
+  return (
+    <div>
+      {isLoading
+        ? <Loading />
+        : <Welcome />}
+    </div>
+  )
+}
+
+// 🔴 children component
+const Welcome = () =>
+  <h1>Welcome to Dummy API</h1>
+
+// 🔴 children component
+const Loading = () =>
+  <p>Loading...</p>
+
+export default LoadingExample
+```
+
+***
+
+## Switch - Case Statement
+
+Perkondisian terakhir yang akan kita bahas adalah dengan menggunakan `Conditional Switch Statement`
+
+```js
+// 🔴 _Syntax_
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+```
+
+Contohnya seperti...
+
+```js
+switch (new Date().getDay()) {
+  case 0:
+    day = "Minggu";
+    break;
+  case 1:
+    day = "Senin";
+    break;
+  case 2:
+    day = "Selasa";
+    break;
+  case 3:
+    day = "Rabu";
+    break;
+  case 4:
+    day = "Kamis";
+    break;
+  case 5:
+    day = "Jum'at";
+    break;
+  case 6:
+    day = "Sabtu";
+}
+```
+
+... dimana penulisan contoh `code` di atas akan sulit dibaca dan akan sangat panjang apabila kita menggunakan baik `conditional ternary operation` apalagi menggunakan `if else statement`.
+
+`Switch-case statement` digunakan dalam penulisan `useReducer` menggantikan `useState` manakala `state management` bertambah kompleks -- terutama jika tipe data `initialState` bukan lagi `JavaScript Primitive` [e.g: `Array` dan `Object`].
+
+`React Hooks useReducer` akan kita bahas secara khusus pada artikel selanjutnya _Insha Allah_. Namun sebagai perkenalan awal, maka berikut `code` penulisan `Component Counter` menggunakan `useReducer` dalam kaitannya dengan pembahasan `Conditional Rendering` menggunakan `Switch Statement`.
+
+```jsx
+import React, { useReducer } from 'react'
+
+const initialState = 0
+
+const reducer = (state, action) => {
+  switch (action) {
+    case 'increment':
+      return state + 1
+    case 'decrement':
+      return state - 1
+    case 'reset':
+      return 0
+    default:
+      throw new Error('Unexpected action')
+  }
+}
+
+function Counter() {
+  const [count, dispatch] = useReducer(reducer, initialState)
+  return (
+    <>
+      <h1>Counter with useReducer</h1>
+      <h2>{count}</h2>
+      <button onClick={() => dispatch('increment')}>
+        increment
+      </button>
+      <button onClick={() => dispatch('reset')}>
+        reset
+      </button>
+      <button onClick={() => dispatch('decrement')}>
+        decrement
+      </button>
+    </>
+  )
+}
+
+export default Counter
+
+```
+
+Semoga bermanfaat...
