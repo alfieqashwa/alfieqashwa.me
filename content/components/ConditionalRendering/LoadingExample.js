@@ -6,35 +6,37 @@ function LoadingExample() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    console.log(isLoading)
     const id = setInterval(() => {
-      setIsLoading(!isLoading)
+      setIsLoading(i => !i)
     }, 1500)
     return () => clearInterval(id)
-  })
+  }, [])
 
   return (
-    <center
+    <div
       sx={{
         background: `papayawhip`,
         paddingTop: `3px`,
         paddingBottom: `10px`,
-        mx: `100px`,
         borderRadius: `10px`
       }}
     >
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <h1
-          sx={{
-            color: `teal`,
-            fontSize: `32px`
-          }}
-        >
-          Welcome to Dummy API !
-        </h1>
-      )}
-    </center>
+      <center>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <h4
+            sx={{
+              color: `teal`,
+              fontSize: `26px`
+            }}
+          >
+            Dummy API!
+          </h4>
+        )}
+      </center>
+    </div>
   )
 }
 
@@ -42,8 +44,7 @@ const Loading = () => (
   <h4
     sx={{
       color: `tomato`,
-      fontSize: `32px`,
-      py: `21px`
+      fontSize: `26px`
     }}
   >
     Loading...
