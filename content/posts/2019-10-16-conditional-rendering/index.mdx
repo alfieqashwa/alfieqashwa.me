@@ -415,11 +415,12 @@ function LoadingExample() {
       setIsLoading
     ] = useState(true)
 
-useEffect(() => {
-  // dummy fetch API timing
-  setTimeout(() => {
-    setIsLoading(false)
-  }, 1500)
+  useEffect(() => {
+    // dummy fetch API timing
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+  })
 
   return (
     <div>
