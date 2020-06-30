@@ -1,20 +1,22 @@
 /** @jsx jsx */
-import { jsx, Layout as ThemeLayout, Main, Container, Box } from 'theme-ui';
-import styled from '@emotion/styled';
+import { jsx, Layout as ThemeLayout, Main, Container, Box } from "theme-ui";
+import styled from "@emotion/styled";
 
-import Layout from '@narative/gatsby-theme-novela/src/components/Layout';
-import Section from '@narative/gatsby-theme-novela/src/components/Section';
-import SEO from '@narative/gatsby-theme-novela/src/components/SEO';
-import Headings from '@narative/gatsby-theme-novela/src/components/Headings';
-import Paragraph from '@narative/gatsby-theme-novela/src/components/Paragraph';
-import Anchor from '@narative/gatsby-theme-novela/src/components/Anchor';
-import Image from '@narative/gatsby-theme-novela/src/components/Image';
-import mediaqueries from '@narative/gatsby-theme-novela/src/styles/media';
+import Layout from "@narative/gatsby-theme-novela/src/components/Layout";
+import Section from "@narative/gatsby-theme-novela/src/components/Section";
+import SEO from "@narative/gatsby-theme-novela/src/components/SEO";
+import Headings from "@narative/gatsby-theme-novela/src/components/Headings";
+import Paragraph from "@narative/gatsby-theme-novela/src/components/Paragraph";
+import Anchor from "@narative/gatsby-theme-novela/src/components/Anchor";
+import Image from "@narative/gatsby-theme-novela/src/components/Image";
+import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
 
-import AFK from '../assets/afk.jpeg';
-import Sabyan from '../assets/sabyan.jpg';
-import Kebab from '../assets/kebab.png';
-import TwinHouse from '../assets/twinhouse.png';
+import AFK from "../assets/afk.jpeg";
+import Sabyan from "../assets/sabyan.jpg";
+import Kebab from "../assets/kebab.png";
+import TwinHouse from "../assets/twinhouse.png";
+import AlhadiKarpet from "../assets/alhadikarpet.png";
+import Covid19 from "../assets/covid19.png";
 
 export default () => (
   <Layout>
@@ -23,9 +25,21 @@ export default () => (
       <ThemeLayout>
         <Main>
           <Container>
-            <div sx={{ marginTop: '80px' }}>
+            <div sx={{ marginTop: "80px" }}>
               <Headings.h1>My Portfolio</Headings.h1>
             </div>
+            <Card>
+              <H2>Covid-19 Data API</H2>
+              <Img src={Covid19} alt="Covid-19 Data API" />
+              <P>Create using NextJS & Tailwindcss</P>
+              <Anchor>https://covid-19.alfieqashwa.now.sh</Anchor>
+            </Card>
+            <Card>
+              <H2>Alhadi Karpet</H2>
+              <Img src={AlhadiKarpet} alt="Alhadi Karpet" />
+              <P>Katalog Sajadah, Permadani untuk Masjid</P>
+              <Anchor>https://www.alhadikarpet.com</Anchor>
+            </Card>
             <Card>
               <H2>AFK Skin Care</H2>
               <Img src={AFK} alt="AFK" />
