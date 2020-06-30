@@ -1,6 +1,6 @@
 - name: Alfie Qashwa
   bio: |
-    Written by Alfie Qashwa. Learn In The Clouds As Dead As Leaves. 🇮🇩
+    Written by Alfie Qashwa. Learn In The Clouds As Dead As Leaves.
   avatar: ./avatars/alfieqashwa.jpg
   featured: true
   social:
@@ -13,7 +13,7 @@
 
 - name: Celloworld
   bio: |
-    Written by Celloworld. 'Somewhere I'm NOT Scatterbrain' ~ Radiohead. 🇬🇧
+    Written by Celloworld. 'Somewhere I'm NOT Scatterbrain' ~ Radiohead.
   avatar: ./avatars/celloworld.png
   featured: true
   social:

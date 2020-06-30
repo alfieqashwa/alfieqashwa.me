@@ -1,17 +1,16 @@
 /** @jsx jsx */
-import { useState, useEffect } from 'react'
-import { jsx } from 'theme-ui'
+import { useState, useEffect } from "react";
+import { jsx } from "theme-ui";
 
 function LoadingExample() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log(isLoading)
     const id = setInterval(() => {
-      setIsLoading(i => !i)
-    }, 1500)
-    return () => clearInterval(id)
-  }, [])
+      setIsLoading(i => !i);
+    }, 1500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div
@@ -37,7 +36,7 @@ function LoadingExample() {
         )}
       </center>
     </div>
-  )
+  );
 }
 
 const Loading = () => (
@@ -49,6 +48,6 @@ const Loading = () => (
   >
     Loading...
   </h4>
-)
+);
 
-export default LoadingExample
+export default LoadingExample;
